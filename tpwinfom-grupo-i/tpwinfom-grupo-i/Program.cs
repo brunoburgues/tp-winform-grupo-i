@@ -16,7 +16,7 @@ namespace tpwinfom_grupo_i
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new menuPrincipalVentana());
         }
     }
 }

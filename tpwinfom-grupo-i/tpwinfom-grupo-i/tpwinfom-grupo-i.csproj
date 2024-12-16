@@ -46,14 +46,48 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="ArtículoVentana.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="ArtículoVentana.Designer.cs">
+      <DependentUpon>ArtículoVentana.cs</DependentUpon>
     </Compile>
+    <Compile Include="ArtículoClase.cs" />
+    <Compile Include="categoríaClase.cs" />
+    <Compile Include="imágenClase.cs" />
+    <Compile Include="menuPrincipalVentana.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="menuPrincipalVentana.Designer.cs">
+      <DependentUpon>menuPrincipalVentana.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Marca - Copia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Marca - Copia.Designer.cs">
+      <DependentUpon>Marca - Copia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MarcaVentana.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MarcaVentana.Designer.cs">
+      <DependentUpon>MarcaVentana.cs</DependentUpon>
+    </Compile>
+    <Compile Include="marcaClase.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ArtículoVentana.resx">
+      <DependentUpon>ArtículoVentana.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="menuPrincipalVentana.resx">
+      <DependentUpon>menuPrincipalVentana.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Marca - Copia.resx">
+      <DependentUpon>Marca - Copia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MarcaVentana.resx">
+      <DependentUpon>MarcaVentana.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace tpwinfom_grupo_i
 {
-    public partial class Marca : Form
+    public partial class categoría : Form
     {
-        public Marca()
+        public categoría()
         {
             InitializeComponent();
         }

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace tpwinfom_grupo_i
 {
-    public partial class Artículo : Form
+    public partial class ArtículoVentana : Form
     {
-        public Artículo()
+        public ArtículoVentana()
         {
             InitializeComponent();
         }

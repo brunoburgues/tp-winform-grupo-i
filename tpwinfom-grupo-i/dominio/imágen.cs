@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace tpwinfom_grupo_i
+namespace dominio
 {
-    internal class imágenClase
+    internal class imágen
     {
     }
 }

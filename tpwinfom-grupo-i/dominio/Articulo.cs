@@ -8,39 +8,25 @@ namespace Dominio
 {
     public class Articulo
     {
-        private int Id;
-        private string Codigo;
-        private string Nombre;
-        private string Descripcion;
-        private List<Imagen> Imagenes;
-        private Marca Marca;
-        private Categoria Categoria;
-        private decimal Precio;
+        public int Id { get; set; }
+        public string Codigo { get; set; }
+        public string Nombre { get; set; }
+        public string Descripcion { get; set; }
+        public Marca Marca { get; set; }
+        public Categoria Categoria { get; set; }
+        public decimal Precio { get; set; }
+        public List<Imagen> Imagenes { get; set; }
 
         public Articulo(int id, string codigo, string nombre, string descripcion, Marca marca, Categoria categoria, decimal precio)
         {
-            Id=id;
-            Codigo=codigo;
-            Nombre=nombre;
-            Descripcion=descripcion;
-            Marca=marca;
-            Categoria=categoria;
-            Precio=precio;
-            Imagenes=new List<Imagen>();
+            Id = id;
+            Codigo = codigo;
+            Nombre = nombre;
+            Descripcion = descripcion;
+            Marca = marca;
+            Categoria = categoria;
+            Precio = precio;
+            Imagenes = new List<Imagen>();
         }
-
-        public int GetId() { return Id; }
-        public string GetCodigo() { return Codigo; }
-        public void SetCodigo(string codigo) { Codigo = codigo; }
-        public string GetNombre() { return Nombre; }
-        public void SetNombre(string nombre) { Nombre = nombre; }
-        public string GetDescripcion() { return Descripcion; }
-        public void SetDescripcion(string descripcion) { Descripcion = descripcion; }
-        public Marca GetMarca() { return Marca; } 
-        public void SetMarca(Marca marca) { Marca = marca; }
-        public Categoria GetCategoria() { return Categoria; }
-        public void SetCategoria(Categoria categoria) { Categoria = categoria; }
-        public List<Imagen> GetImagenes() { return Imagenes; }
-        public void SetImagenes(List<Imagen> Imagenes) { Imagenes.Clear(); }
     }
 }

@@ -8,7 +8,7 @@ namespace Dominio
 {
     public class Imagen
     {
-        private int Id; 
+        private int Id;
         private string Url; 
         public Imagen(int id, string url)
         {

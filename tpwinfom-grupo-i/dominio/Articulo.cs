@@ -26,7 +26,7 @@ namespace Dominio
             Marca = marca;
             Categoria = categoria;
             Precio = precio;
-            Imagenes = new List<Imagen>();
+            Imagenes = imagens;
         }
     }
 }

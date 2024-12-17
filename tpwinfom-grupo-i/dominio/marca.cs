@@ -16,9 +16,6 @@ namespace Dominio
             Id = id;
             Nombre = nombre;    
         }
-
-        public int GetId() { return Id; }
-        public string GetNombre() { return Nombre; }
-        public void SetNombre(string nombre) { Nombre = nombre; }
+        public override string ToString() { return Nombre; }
     }
 }

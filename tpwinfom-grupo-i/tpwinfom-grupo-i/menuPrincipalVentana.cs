@@ -24,7 +24,6 @@ namespace tpwinfom_grupo_i
             ArticuloDB articuloDB = new ArticuloDB();
             List<Articulo> list = articuloDB.ListarArticulos();
             dataGridView1.DataSource = list;
-
         }
     }
 }

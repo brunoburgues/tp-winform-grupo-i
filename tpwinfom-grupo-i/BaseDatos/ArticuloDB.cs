@@ -31,18 +31,8 @@ namespace BaseDatos
                     string categoria = (string)db.Reader["Categoria"];
                     Categoria auxC = new Categoria(idC, categoria);
                     decimal precio = (decimal)db.Reader["Precio"];
-                    List<Imagen> listaImagenes = new List<Imagen>();
-                    AccesoBaseDatos db2 = new AccesoBaseDatos();
-                    db2.SetConsulta("select Id, ImagenUrl as Imagen from IMAGENES where IdArticulo = " + id);
-                    db2.Lectura();
-                        while(db2.Reader.Read())
-                        {
-                            int idImagen = (int)db2.Reader["Id"];
-                            string urlImagen = (string)db2.Reader["Imagen"];
-                            Imagen auxI = new Imagen(idImagen, urlImagen);
-                            listaImagenes.Add(auxI);
-                        }
-                    db2.CloseConexion();
+                    ImagenDB listaImagen = new ImagenDB();
+                    List<Imagen> listaImagenes = listaImagen.ListarImagenes(id);
                     Articulo auxA = new Articulo(id, codigo, nombre, descripcion, auxM, auxC, precio, listaImagenes);
                     lista.Add(auxA);
                 }

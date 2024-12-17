@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BaseDatos
 {
-    internal class ImagenDB
+    public class ImagenDB
     {
         public List<Imagen> ListarImagenes(int id)
         {

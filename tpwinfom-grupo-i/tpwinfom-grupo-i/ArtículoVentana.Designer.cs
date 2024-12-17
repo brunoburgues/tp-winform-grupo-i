@@ -36,15 +36,15 @@
             this.marca = new System.Windows.Forms.Label();
             this.Categoría = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.galería = new System.Windows.Forms.Button();
+            this.galeria = new System.Windows.Forms.Button();
             this.agregar = new System.Windows.Forms.Button();
-            this.eliminar = new System.Windows.Forms.Button();
+            this.cancelar = new System.Windows.Forms.Button();
             this.listaMarca = new System.Windows.Forms.ListBox();
             this.listaCategoría = new System.Windows.Forms.ListBox();
             this.cajaCódigo = new System.Windows.Forms.TextBox();
             this.cajaNombre = new System.Windows.Forms.TextBox();
             this.cajaPrecio = new System.Windows.Forms.TextBox();
-            this.modificar = new System.Windows.Forms.Button();
+            this.eliminar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -64,7 +64,7 @@
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(32, 47);
+            this.label2.Location = new System.Drawing.Point(22, 47);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(94, 13);
             this.label2.TabIndex = 1;
@@ -75,7 +75,7 @@
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(32, 71);
+            this.label3.Location = new System.Drawing.Point(22, 71);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(44, 13);
             this.label3.TabIndex = 2;
@@ -88,7 +88,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Location = new System.Drawing.Point(203, 13);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(186, 94);
+            this.pictureBox1.Size = new System.Drawing.Size(186, 171);
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
@@ -96,10 +96,10 @@
             // 
             this.Descripción.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.Descripción.Location = new System.Drawing.Point(25, 169);
+            this.Descripción.Location = new System.Drawing.Point(25, 199);
             this.Descripción.Multiline = true;
             this.Descripción.Name = "Descripción";
-            this.Descripción.Size = new System.Drawing.Size(165, 71);
+            this.Descripción.Size = new System.Drawing.Size(165, 62);
             this.Descripción.TabIndex = 4;
             // 
             // marca
@@ -107,7 +107,7 @@
             this.marca.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.marca.AutoSize = true;
-            this.marca.Location = new System.Drawing.Point(31, 98);
+            this.marca.Location = new System.Drawing.Point(22, 101);
             this.marca.Name = "marca";
             this.marca.Size = new System.Drawing.Size(37, 13);
             this.marca.TabIndex = 5;
@@ -118,7 +118,7 @@
             this.Categoría.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Categoría.AutoSize = true;
-            this.Categoría.Location = new System.Drawing.Point(22, 118);
+            this.Categoría.Location = new System.Drawing.Point(22, 127);
             this.Categoría.Name = "Categoría";
             this.Categoría.Size = new System.Drawing.Size(54, 13);
             this.Categoría.TabIndex = 6;
@@ -129,56 +129,62 @@
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(31, 145);
+            this.label6.Location = new System.Drawing.Point(22, 166);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(37, 13);
             this.label6.TabIndex = 7;
             this.label6.Text = "Precio";
             // 
-            // galería
+            // galeria
             // 
-            this.galería.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.galería.Location = new System.Drawing.Point(203, 113);
-            this.galería.Name = "galería";
-            this.galería.Size = new System.Drawing.Size(90, 23);
-            this.galería.TabIndex = 8;
-            this.galería.Text = "Galería";
-            this.galería.UseVisualStyleBackColor = true;
+            this.galeria.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.galeria.Location = new System.Drawing.Point(203, 199);
+            this.galeria.Name = "galeria";
+            this.galeria.Size = new System.Drawing.Size(90, 23);
+            this.galeria.TabIndex = 8;
+            this.galeria.Text = "Galería";
+            this.galeria.UseVisualStyleBackColor = true;
             // 
             // agregar
             // 
             this.agregar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.agregar.Location = new System.Drawing.Point(203, 192);
+            this.agregar.Location = new System.Drawing.Point(299, 199);
             this.agregar.Name = "agregar";
             this.agregar.Size = new System.Drawing.Size(90, 23);
             this.agregar.TabIndex = 9;
             this.agregar.Text = "Agregar";
             this.agregar.UseVisualStyleBackColor = true;
+            this.agregar.Click += new System.EventHandler(this.agregar_Click);
             // 
-            // eliminar
+            // cancelar
             // 
-            this.eliminar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.eliminar.Location = new System.Drawing.Point(299, 217);
-            this.eliminar.Name = "eliminar";
-            this.eliminar.Size = new System.Drawing.Size(90, 23);
-            this.eliminar.TabIndex = 10;
-            this.eliminar.Text = "Eliminar";
-            this.eliminar.UseVisualStyleBackColor = true;
+            this.cancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.cancelar.BackColor = System.Drawing.Color.Brown;
+            this.cancelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.cancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cancelar.ForeColor = System.Drawing.SystemColors.InactiveBorder;
+            this.cancelar.Location = new System.Drawing.Point(299, 237);
+            this.cancelar.Name = "cancelar";
+            this.cancelar.Size = new System.Drawing.Size(90, 23);
+            this.cancelar.TabIndex = 10;
+            this.cancelar.Text = "Cancelar";
+            this.cancelar.UseVisualStyleBackColor = false;
+            this.cancelar.Click += new System.EventHandler(this.cancelar_Click);
             // 
             // listaMarca
             // 
             this.listaMarca.FormattingEnabled = true;
-            this.listaMarca.Location = new System.Drawing.Point(74, 94);
+            this.listaMarca.Location = new System.Drawing.Point(82, 97);
             this.listaMarca.Name = "listaMarca";
-            this.listaMarca.Size = new System.Drawing.Size(116, 17);
+            this.listaMarca.Size = new System.Drawing.Size(108, 17);
             this.listaMarca.TabIndex = 11;
             // 
             // listaCategoría
             // 
             this.listaCategoría.FormattingEnabled = true;
-            this.listaCategoría.Location = new System.Drawing.Point(74, 119);
+            this.listaCategoría.Location = new System.Drawing.Point(82, 128);
             this.listaCategoría.Name = "listaCategoría";
-            this.listaCategoría.Size = new System.Drawing.Size(116, 17);
+            this.listaCategoría.Size = new System.Drawing.Size(108, 17);
             this.listaCategoría.TabIndex = 12;
             // 
             // cajaCódigo
@@ -197,35 +203,36 @@
             // 
             // cajaPrecio
             // 
-            this.cajaPrecio.Location = new System.Drawing.Point(90, 143);
+            this.cajaPrecio.Location = new System.Drawing.Point(82, 164);
             this.cajaPrecio.Name = "cajaPrecio";
-            this.cajaPrecio.Size = new System.Drawing.Size(100, 20);
+            this.cajaPrecio.Size = new System.Drawing.Size(108, 20);
             this.cajaPrecio.TabIndex = 15;
             // 
-            // modificar
+            // eliminar
             // 
-            this.modificar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.modificar.Location = new System.Drawing.Point(300, 192);
-            this.modificar.Name = "modificar";
-            this.modificar.Size = new System.Drawing.Size(89, 23);
-            this.modificar.TabIndex = 16;
-            this.modificar.Text = "Modificar";
-            this.modificar.UseVisualStyleBackColor = true;
+            this.eliminar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.eliminar.Location = new System.Drawing.Point(203, 237);
+            this.eliminar.Name = "eliminar";
+            this.eliminar.Size = new System.Drawing.Size(90, 23);
+            this.eliminar.TabIndex = 16;
+            this.eliminar.Text = "Eliminar";
+            this.eliminar.UseVisualStyleBackColor = true;
+            this.eliminar.Visible = false;
             // 
             // ArtículoVentana
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(414, 271);
-            this.Controls.Add(this.modificar);
+            this.ClientSize = new System.Drawing.Size(414, 273);
+            this.Controls.Add(this.eliminar);
             this.Controls.Add(this.cajaPrecio);
             this.Controls.Add(this.cajaNombre);
             this.Controls.Add(this.cajaCódigo);
             this.Controls.Add(this.listaCategoría);
             this.Controls.Add(this.listaMarca);
-            this.Controls.Add(this.eliminar);
+            this.Controls.Add(this.cancelar);
             this.Controls.Add(this.agregar);
-            this.Controls.Add(this.galería);
+            this.Controls.Add(this.galeria);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.Categoría);
             this.Controls.Add(this.marca);
@@ -255,14 +262,14 @@
         private System.Windows.Forms.Label marca;
         private System.Windows.Forms.Label Categoría;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button galería;
+        private System.Windows.Forms.Button galeria;
         private System.Windows.Forms.Button agregar;
-        private System.Windows.Forms.Button eliminar;
+        private System.Windows.Forms.Button cancelar;
         private System.Windows.Forms.ListBox listaMarca;
         private System.Windows.Forms.ListBox listaCategoría;
         private System.Windows.Forms.TextBox cajaCódigo;
         private System.Windows.Forms.TextBox cajaNombre;
         private System.Windows.Forms.TextBox cajaPrecio;
-        private System.Windows.Forms.Button modificar;
+        private System.Windows.Forms.Button eliminar;
     }
 }

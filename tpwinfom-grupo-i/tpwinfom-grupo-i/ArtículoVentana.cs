@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BaseDatos;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,7 +20,29 @@ namespace tpwinfom_grupo_i
 
         private void ArtículoVentana_Load(object sender, EventArgs e)
         {
+            CategoriaDB categoriaDB = new CategoriaDB();
+            listaCategoría.DataSource = categoriaDB.listarCategoria();
+            listaCategoría.ValueMember = "Id";
+            listaCategoría.DisplayMember = "Nombre";
+            MarcaDB marcaDB = new MarcaDB();
+            listaMarca.DataSource = marcaDB.listarMarcas();
+            listaMarca.ValueMember = "Id";
+            listaMarca.DisplayMember = "Nombre";
 
+
+            listaCategoría.SelectedIndex = -1;
+            listaMarca.SelectedIndex = -1;
+            
+        }
+
+        private void agregar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cancelar_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

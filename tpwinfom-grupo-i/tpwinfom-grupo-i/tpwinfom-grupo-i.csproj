@@ -52,9 +52,6 @@
     <Compile Include="ArtículoVentana.Designer.cs">
       <DependentUpon>ArtículoVentana.cs</DependentUpon>
     </Compile>
-    <Compile Include="ArtículoClase.cs" />
-    <Compile Include="categoríaClase.cs" />
-    <Compile Include="imágenClase.cs" />
     <Compile Include="menuPrincipalVentana.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,7 +70,6 @@
     <Compile Include="MarcaVentana.Designer.cs">
       <DependentUpon>MarcaVentana.cs</DependentUpon>
     </Compile>
-    <Compile Include="marcaClase.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="ArtículoVentana.resx">

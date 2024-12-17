@@ -15,5 +15,8 @@ namespace Dominio
             Id = id;
             Url = url;
         }
+        public int GetId() { return Id; }
+        public string GetUrl() { return Url; }
+        public void SetUrl(string url) { Url = url; }
     }
 }

@@ -28,5 +28,11 @@ namespace tpwinfom_grupo_i
             dgwArticulos.Columns["Codigo"].Visible = false;
             dgwArticulos.Columns["Descripcion"].Visible = false;
         }
+
+        private void agregarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ArtículoVentana ventanaArticulo = new ArtículoVentana();
+            ventanaArticulo.ShowDialog();
+        }
     }
 }

@@ -131,6 +131,7 @@
             this.MaximumSize = new System.Drawing.Size(430, 310);
             this.MinimumSize = new System.Drawing.Size(430, 310);
             this.Name = "categoría";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Marca";
             this.ResumeLayout(false);
             this.PerformLayout();

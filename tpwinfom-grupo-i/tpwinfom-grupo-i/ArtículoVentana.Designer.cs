@@ -212,7 +212,7 @@
             this.modificar.Text = "Modificar";
             this.modificar.UseVisualStyleBackColor = true;
             // 
-            // Artículo
+            // ArtículoVentana
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -235,8 +235,10 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.MinimumSize = new System.Drawing.Size(430, 310);
-            this.Name = "Artículo";
-            this.Text = "Artículo";
+            this.Name = "ArtículoVentana";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Agregar Artículo";
+            this.Load += new System.EventHandler(this.ArtículoVentana_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

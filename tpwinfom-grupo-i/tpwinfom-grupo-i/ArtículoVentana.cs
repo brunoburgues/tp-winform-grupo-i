@@ -16,5 +16,10 @@ namespace tpwinfom_grupo_i
         {
             InitializeComponent();
         }
+
+        private void ArtículoVentana_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

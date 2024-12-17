@@ -16,17 +16,5 @@ namespace Dominio
         public Categoria Categoria { get; set; }
         public decimal Precio { get; set; }
         public List<Imagen> Imagenes { get; set; }
-
-        public Articulo(int id, string codigo, string nombre, string descripcion, Marca marca, Categoria categoria, decimal precio, List<Imagen> imagens)
-        {
-            Id = id;
-            Codigo = codigo;
-            Nombre = nombre;
-            Descripcion = descripcion;
-            Marca = marca;
-            Categoria = categoria;
-            Precio = precio;
-            Imagenes = new List<Imagen>();
-        }
     }
 }

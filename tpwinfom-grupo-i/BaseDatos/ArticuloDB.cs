@@ -20,20 +20,22 @@ namespace BaseDatos
                 db.Lectura();
                 while (db.Reader.Read())
                 {
-                    int id = (int)db.Reader["Id"];
-                    string codigo = (string)db.Reader["Codigo"];
-                    string nombre = (string)db.Reader["Nombre"];
-                    string descripcion = (string)db.Reader["Descripcion"];
-                    int idM = (int)db.Reader["IdMarca"];
-                    string marca = (string)db.Reader["Marca"];
-                    Marca auxM = new Marca(idM, marca);
-                    int idC = (int)db.Reader["IdCategoria"];
-                    string categoria = (string)db.Reader["Categoria"];
-                    Categoria auxC = new Categoria(idC, categoria);
-                    decimal precio = (decimal)db.Reader["Precio"];
+                    Articulo auxA = new Articulo();
+                    auxA.Id = (int)db.Reader["Id"];
+                    auxA.Codigo = (string)db.Reader["Codigo"];
+                    auxA.Nombre = (string)db.Reader["Nombre"];
+                    auxA.Descripcion = (string)db.Reader["Descripcion"];
+                    auxA.Marca = new Marca();
+                    auxA.Marca.Id = (int)db.Reader["IdMarca"];
+                    auxA.Marca.Nombre = (string)db.Reader["Marca"];
+                    auxA.Categoria = new Categoria();
+                    auxA.Categoria.Id = (int)db.Reader["IdCategoria"];
+                    auxA.Categoria.Nombre = (string)db.Reader["Categoria"];
+                    auxA.Precio = (decimal)db.Reader["Precio"];
                     ImagenDB listaImagen = new ImagenDB();
-                    List<Imagen> listaImagenes = listaImagen.ListarImagenes(id);
-                    Articulo auxA = new Articulo(id, codigo, nombre, descripcion, auxM, auxC, precio, listaImagenes);
+                    List<Imagen> listaImagenes = listaImagen.ListarImagenes(auxA.Id);
+                    auxA.Imagenes = listaImagenes;
+                    
                     lista.Add(auxA);
                 }
                 return lista;

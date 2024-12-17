@@ -19,9 +19,10 @@ namespace BaseDatos
 				db.Lectura();
 				while(db.Reader.Read())
 				{
-                    int idImagen = (int)db.Reader["Id"];
-                    string urlImagen = (string)db.Reader["Imagen"];
-                    Imagen auxI = new Imagen(idImagen, urlImagen);
+                    Imagen auxI = new Imagen();
+
+                    auxI.Id = (int)db.Reader["Id"];
+                    auxI.Url = (string)db.Reader["Imagen"];
                     lista.Add(auxI);
                 }
 				return lista;

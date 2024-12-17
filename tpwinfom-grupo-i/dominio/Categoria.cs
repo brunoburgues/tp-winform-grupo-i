@@ -8,17 +8,7 @@ namespace Dominio
 {
     public class Categoria
     {
-        private int Id;
-        private string Nombre;
-
-        public Categoria(int id, string nombre)
-        {
-            Id=id;
-            Nombre=nombre;
-        }
-
-        public int GetId() { return Id; }
-        public string GetNombre() { return Nombre; }
-        public void SetNombre(string nombre) { Nombre = nombre; }
+        public int Id { get; set; }
+        public string Nombre { get; set;}
     }
 }

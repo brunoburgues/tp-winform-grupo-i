@@ -15,8 +15,9 @@ namespace Dominio
         private List<Imagen> Imagenes;
         private Marca Marca;
         private Categoria Categoria;
+        private decimal Precio;
 
-        public Articulo(int id, string codigo, string nombre, string descripcion, Marca marca, Categoria categoria)
+        public Articulo(int id, string codigo, string nombre, string descripcion, Marca marca, Categoria categoria, decimal precio)
         {
             Id=id;
             Codigo=codigo;
@@ -24,6 +25,8 @@ namespace Dominio
             Descripcion=descripcion;
             Marca=marca;
             Categoria=categoria;
+            Precio=precio;
+            Imagenes=new List<Imagen>();
         }
 
         public int GetId() { return Id; }

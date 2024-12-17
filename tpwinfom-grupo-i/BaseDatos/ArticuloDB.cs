@@ -31,7 +31,9 @@ namespace BaseDatos
                     string categoria = (string)db.Reader["Categoria"];
                     Categoria auxC = new Categoria(idC, categoria);
                     decimal precio = (decimal)db.Reader["Precio"];
-                    Articulo auxA = new Articulo(id, codigo, nombre, descripcion, auxM, auxC, precio);
+                    ImagenDB listaImagen = new ImagenDB();
+                    List<Imagen> listaImagenes = listaImagen.ListarImagenes(id);
+                    Articulo auxA = new Articulo(id, codigo, nombre, descripcion, auxM, auxC, precio, listaImagenes);
                     lista.Add(auxA);
                 }
                 return lista;

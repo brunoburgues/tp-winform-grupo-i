@@ -23,7 +23,10 @@ namespace tpwinfom_grupo_i
         {
             ArticuloDB articuloDB = new ArticuloDB();
             List<Articulo> list = articuloDB.ListarArticulos();
-            dataGridView1.DataSource = list;
+            dgwArticulos.DataSource = list;
+            dgwArticulos.Columns["Id"].Visible = false;
+            dgwArticulos.Columns["Codigo"].Visible = false;
+            dgwArticulos.Columns["Descripcion"].Visible = false;
         }
     }
 }

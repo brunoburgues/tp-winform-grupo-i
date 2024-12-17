@@ -36,9 +36,9 @@
             this.categoríasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.listaArticulo = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgwArticulos = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgwArticulos)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -105,21 +105,24 @@
             this.listaArticulo.TabIndex = 2;
             this.listaArticulo.Text = "Lista de artículos";
             // 
-            // dataGridView1
+            // dgwArticulos
             // 
-            this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(32, 94);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(459, 203);
-            this.dataGridView1.TabIndex = 3;
+            this.dgwArticulos.AllowUserToOrderColumns = true;
+            this.dgwArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgwArticulos.Location = new System.Drawing.Point(32, 94);
+            this.dgwArticulos.MultiSelect = false;
+            this.dgwArticulos.Name = "dgwArticulos";
+            this.dgwArticulos.ReadOnly = true;
+            this.dgwArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgwArticulos.Size = new System.Drawing.Size(444, 203);
+            this.dgwArticulos.TabIndex = 3;
             // 
             // menuPrincipalVentana
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(567, 349);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgwArticulos);
             this.Controls.Add(this.listaArticulo);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
@@ -129,7 +132,7 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgwArticulos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -145,7 +148,7 @@
         private System.Windows.Forms.ToolStripMenuItem categoríasToolStripMenuItem;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.Label listaArticulo;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgwArticulos;
     }
 }
 

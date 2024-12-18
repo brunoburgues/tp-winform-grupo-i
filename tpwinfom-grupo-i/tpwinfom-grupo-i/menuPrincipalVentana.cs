@@ -60,7 +60,7 @@ namespace tpwinfom_grupo_i
                 cbFiltro.DataSource = categoriaDB.listarCategoria();
             }
 
-            if (cbFiltro.SelectedIndex == 1)
+            if (cbSeleccionarFiltro.SelectedIndex == 1)
             {
                 MarcaDB marcaDB = new MarcaDB();
                 cbFiltro.DataSource = marcaDB.listarMarcas();

@@ -85,6 +85,8 @@ namespace tpwinfom_grupo_i
                 cbSeleccionarFiltro.SelectedIndex = -1;
                 cbFiltro.DataSource = null;
             }
+            tbBusqueda.Text = "";
+            dgwArticulos.DataSource = list;
         }
     }
 }

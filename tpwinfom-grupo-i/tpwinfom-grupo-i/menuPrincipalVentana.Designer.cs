@@ -142,8 +142,10 @@
             // 
             // btnBusqueda
             // 
-            this.btnBusqueda.BackColor = System.Drawing.Color.Transparent;
-            this.btnBusqueda.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnBusqueda.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnBusqueda.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnBusqueda.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBusqueda.ForeColor = System.Drawing.Color.White;
             this.btnBusqueda.Location = new System.Drawing.Point(255, 57);
             this.btnBusqueda.Name = "btnBusqueda";
             this.btnBusqueda.Size = new System.Drawing.Size(115, 20);
@@ -180,8 +182,10 @@
             // 
             // btnEliminarFiltros
             // 
-            this.btnEliminarFiltros.BackColor = System.Drawing.Color.Transparent;
-            this.btnEliminarFiltros.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnEliminarFiltros.BackColor = System.Drawing.Color.Brown;
+            this.btnEliminarFiltros.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnEliminarFiltros.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminarFiltros.ForeColor = System.Drawing.Color.White;
             this.btnEliminarFiltros.Location = new System.Drawing.Point(255, 84);
             this.btnEliminarFiltros.Name = "btnEliminarFiltros";
             this.btnEliminarFiltros.Size = new System.Drawing.Size(115, 20);

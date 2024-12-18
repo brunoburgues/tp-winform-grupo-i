@@ -43,6 +43,7 @@
             this.tbBusqueda = new System.Windows.Forms.TextBox();
             this.cbSeleccionarFiltro = new System.Windows.Forms.ComboBox();
             this.cbFiltro = new System.Windows.Forms.ComboBox();
+            this.btnEliminarFiltros = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgwArticulos)).BeginInit();
             this.SuspendLayout();
@@ -130,12 +131,12 @@
             // 
             this.dgwArticulos.AllowUserToOrderColumns = true;
             this.dgwArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgwArticulos.Location = new System.Drawing.Point(32, 94);
+            this.dgwArticulos.Location = new System.Drawing.Point(32, 124);
             this.dgwArticulos.MultiSelect = false;
             this.dgwArticulos.Name = "dgwArticulos";
             this.dgwArticulos.ReadOnly = true;
             this.dgwArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgwArticulos.Size = new System.Drawing.Size(444, 203);
+            this.dgwArticulos.Size = new System.Drawing.Size(444, 173);
             this.dgwArticulos.TabIndex = 3;
             this.dgwArticulos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgwArticulos_CellDoubleClick);
             // 
@@ -143,9 +144,9 @@
             // 
             this.btnBusqueda.BackColor = System.Drawing.Color.Transparent;
             this.btnBusqueda.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnBusqueda.Location = new System.Drawing.Point(412, 58);
+            this.btnBusqueda.Location = new System.Drawing.Point(255, 57);
             this.btnBusqueda.Name = "btnBusqueda";
-            this.btnBusqueda.Size = new System.Drawing.Size(75, 20);
+            this.btnBusqueda.Size = new System.Drawing.Size(115, 20);
             this.btnBusqueda.TabIndex = 4;
             this.btnBusqueda.Text = "Buscar";
             this.btnBusqueda.UseVisualStyleBackColor = false;
@@ -155,14 +156,14 @@
             // 
             this.tbBusqueda.Location = new System.Drawing.Point(32, 57);
             this.tbBusqueda.Name = "tbBusqueda";
-            this.tbBusqueda.Size = new System.Drawing.Size(150, 20);
+            this.tbBusqueda.Size = new System.Drawing.Size(217, 20);
             this.tbBusqueda.TabIndex = 5;
             // 
             // cbSeleccionarFiltro
             // 
             this.cbSeleccionarFiltro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSeleccionarFiltro.FormattingEnabled = true;
-            this.cbSeleccionarFiltro.Location = new System.Drawing.Point(188, 57);
+            this.cbSeleccionarFiltro.Location = new System.Drawing.Point(32, 83);
             this.cbSeleccionarFiltro.Name = "cbSeleccionarFiltro";
             this.cbSeleccionarFiltro.Size = new System.Drawing.Size(106, 21);
             this.cbSeleccionarFiltro.TabIndex = 6;
@@ -172,16 +173,29 @@
             // 
             this.cbFiltro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbFiltro.FormattingEnabled = true;
-            this.cbFiltro.Location = new System.Drawing.Point(300, 57);
+            this.cbFiltro.Location = new System.Drawing.Point(144, 83);
             this.cbFiltro.Name = "cbFiltro";
             this.cbFiltro.Size = new System.Drawing.Size(106, 21);
             this.cbFiltro.TabIndex = 7;
+            // 
+            // btnEliminarFiltros
+            // 
+            this.btnEliminarFiltros.BackColor = System.Drawing.Color.Transparent;
+            this.btnEliminarFiltros.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnEliminarFiltros.Location = new System.Drawing.Point(255, 84);
+            this.btnEliminarFiltros.Name = "btnEliminarFiltros";
+            this.btnEliminarFiltros.Size = new System.Drawing.Size(115, 20);
+            this.btnEliminarFiltros.TabIndex = 8;
+            this.btnEliminarFiltros.Text = "Eliminar filtros";
+            this.btnEliminarFiltros.UseVisualStyleBackColor = false;
+            this.btnEliminarFiltros.Click += new System.EventHandler(this.btnEliminarFiltros_Click);
             // 
             // menuPrincipalVentana
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(530, 326);
+            this.Controls.Add(this.btnEliminarFiltros);
             this.Controls.Add(this.cbFiltro);
             this.Controls.Add(this.cbSeleccionarFiltro);
             this.Controls.Add(this.tbBusqueda);
@@ -219,6 +233,7 @@
         private System.Windows.Forms.TextBox tbBusqueda;
         private System.Windows.Forms.ComboBox cbSeleccionarFiltro;
         private System.Windows.Forms.ComboBox cbFiltro;
+        private System.Windows.Forms.Button btnEliminarFiltros;
     }
 }
 

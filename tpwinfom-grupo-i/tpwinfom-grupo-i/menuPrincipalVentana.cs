@@ -77,5 +77,14 @@ namespace tpwinfom_grupo_i
                 cbFiltro.DataSource = marcaDB.listarMarcas();
             }
         }
+
+        private void btnEliminarFiltros_Click(object sender, EventArgs e)
+        {
+            if (cbSeleccionarFiltro.SelectedIndex >= 0)
+            {
+                cbSeleccionarFiltro.SelectedIndex = -1;
+                cbFiltro.DataSource = null;
+            }
+        }
     }
 }

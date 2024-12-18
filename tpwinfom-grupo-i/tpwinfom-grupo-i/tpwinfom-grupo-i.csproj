@@ -65,12 +65,6 @@
     <Compile Include="menuPrincipalVentana.Designer.cs">
       <DependentUpon>menuPrincipalVentana.cs</DependentUpon>
     </Compile>
-    <Compile Include="Marca - Copia.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Marca - Copia.Designer.cs">
-      <DependentUpon>Marca - Copia.cs</DependentUpon>
-    </Compile>
     <Compile Include="MarcaVentana.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,9 +81,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="menuPrincipalVentana.resx">
       <DependentUpon>menuPrincipalVentana.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Marca - Copia.resx">
-      <DependentUpon>Marca - Copia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MarcaVentana.resx">
       <DependentUpon>MarcaVentana.cs</DependentUpon>

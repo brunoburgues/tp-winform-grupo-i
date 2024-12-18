@@ -44,15 +44,6 @@ namespace tpwinfom_grupo_i
         }
 
         private void agregar_Click(object sender, EventArgs e)
-<<<<<<< HEAD
-        {
-            nuevoArticulo = new Articulo();
-            nuevoArticulo.Codigo = cajaCódigo.Text;
-            nuevoArticulo.Nombre = cajaNombre.Text;
-            nuevoArticulo.Marca.Id = listaMarca.SelectedIndex;
-            nuevoArticulo.Categoria.Id = listaCategoría.SelectedIndex;
-            nuevoArticulo.Descripcion = cajaDescripcion.Text;
-=======
         {   
             Articulo nuevo = new Articulo();
             ArticuloDB nuevoDB = new ArticuloDB();
@@ -63,7 +54,7 @@ namespace tpwinfom_grupo_i
                 nuevo.Precio = decimal.Parse(cajaPrecio.Text);
                 nuevo.Marca = (Marca)listaMarca.SelectedItem;
                 nuevo.Categoria = (Categoria)listaCategoría.SelectedItem;
-                nuevo.Descripcion = Descripción.Text;
+                nuevo.Descripcion = cajaDescripcion.Text;
 
                 nuevoDB.agregar(nuevo);
                 MessageBox.Show("Agregado exitoso");
@@ -74,9 +65,6 @@ namespace tpwinfom_grupo_i
 
                 MessageBox.Show(ex.ToString());
             }
-
-
->>>>>>> 0d5845fc88d453aacfdaa609c1bd769461faf189
         }
 
         private void cancelar_Click(object sender, EventArgs e)

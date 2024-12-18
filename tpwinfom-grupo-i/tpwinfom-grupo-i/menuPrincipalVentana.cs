@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Dominio;
 using BaseDatos;
 
+
 namespace tpwinfom_grupo_i
 {
     public partial class menuPrincipalVentana : Form
@@ -19,10 +20,12 @@ namespace tpwinfom_grupo_i
             InitializeComponent();
         }
 
+        List<Articulo> list = new List<Articulo>();
+
         private void Form1_Load(object sender, EventArgs e)
         {
             ArticuloDB articuloDB = new ArticuloDB();
-            List<Articulo> list = articuloDB.ListarArticulos();
+            list = articuloDB.ListarArticulos();
             dgwArticulos.DataSource = list;
             dgwArticulos.Columns["Id"].Visible = false;
             dgwArticulos.Columns["Codigo"].Visible = false;
@@ -33,6 +36,12 @@ namespace tpwinfom_grupo_i
         {
             ArtículoVentana ventanaArticulo = new ArtículoVentana();
             ventanaArticulo.ShowDialog();
+        }
+
+        private void btnBusqueda_Click(object sender, EventArgs e)
+        {
+            string busqueda = tbBusqueda.Text;
+            dgwArticulos.DataSource = list.FindAll(a => a.Nombre.IndexOf(busqueda, StringComparison.OrdinalIgnoreCase) >= 0);
         }
     }
 }

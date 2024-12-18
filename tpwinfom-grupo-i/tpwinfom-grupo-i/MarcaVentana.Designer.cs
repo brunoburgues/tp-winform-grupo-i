@@ -33,9 +33,9 @@
             this.codigodeMarca = new System.Windows.Forms.Label();
             this.agregarMarca = new System.Windows.Forms.Button();
             this.eliminarMarca = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.listMarca1 = new System.Windows.Forms.TextBox();
+            this.descripcionMarca = new System.Windows.Forms.TextBox();
+            this.idMarca = new System.Windows.Forms.TextBox();
             this.tituloMarca = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -74,6 +74,7 @@
             this.agregarMarca.TabIndex = 3;
             this.agregarMarca.Text = "Agregar";
             this.agregarMarca.UseVisualStyleBackColor = true;
+            this.agregarMarca.Click += new System.EventHandler(this.agregarMarca_Click);
             // 
             // eliminarMarca
             // 
@@ -84,26 +85,26 @@
             this.eliminarMarca.Text = "Eliminar";
             this.eliminarMarca.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // listMarca1
             // 
-            this.textBox1.Location = new System.Drawing.Point(190, 51);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 5;
+            this.listMarca1.Location = new System.Drawing.Point(190, 54);
+            this.listMarca1.Name = "listMarca1";
+            this.listMarca1.Size = new System.Drawing.Size(100, 20);
+            this.listMarca1.TabIndex = 5;
             // 
-            // textBox2
+            // descripcionMarca
             // 
-            this.textBox2.Location = new System.Drawing.Point(190, 77);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 6;
+            this.descripcionMarca.Location = new System.Drawing.Point(190, 77);
+            this.descripcionMarca.Name = "descripcionMarca";
+            this.descripcionMarca.Size = new System.Drawing.Size(100, 20);
+            this.descripcionMarca.TabIndex = 6;
             // 
-            // textBox3
+            // idMarca
             // 
-            this.textBox3.Location = new System.Drawing.Point(190, 103);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 7;
+            this.idMarca.Location = new System.Drawing.Point(190, 103);
+            this.idMarca.Name = "idMarca";
+            this.idMarca.Size = new System.Drawing.Size(100, 20);
+            this.idMarca.TabIndex = 7;
             // 
             // tituloMarca
             // 
@@ -120,9 +121,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(414, 271);
             this.Controls.Add(this.tituloMarca);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.idMarca);
+            this.Controls.Add(this.descripcionMarca);
+            this.Controls.Add(this.listMarca1);
             this.Controls.Add(this.eliminarMarca);
             this.Controls.Add(this.agregarMarca);
             this.Controls.Add(this.codigodeMarca);
@@ -145,9 +146,9 @@
         private System.Windows.Forms.Label codigodeMarca;
         private System.Windows.Forms.Button agregarMarca;
         private System.Windows.Forms.Button eliminarMarca;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox listMarca1;
+        private System.Windows.Forms.TextBox descripcionMarca;
+        private System.Windows.Forms.TextBox idMarca;
         private System.Windows.Forms.Label tituloMarca;
     }
 }

@@ -88,7 +88,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Location = new System.Drawing.Point(203, 13);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(186, 171);
+            this.pictureBox1.Size = new System.Drawing.Size(186, 169);
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
@@ -99,7 +99,7 @@
             this.Descripción.Location = new System.Drawing.Point(25, 199);
             this.Descripción.Multiline = true;
             this.Descripción.Name = "Descripción";
-            this.Descripción.Size = new System.Drawing.Size(165, 62);
+            this.Descripción.Size = new System.Drawing.Size(165, 60);
             this.Descripción.TabIndex = 4;
             // 
             // marca
@@ -138,7 +138,7 @@
             // galeria
             // 
             this.galeria.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.galeria.Location = new System.Drawing.Point(203, 199);
+            this.galeria.Location = new System.Drawing.Point(203, 197);
             this.galeria.Name = "galeria";
             this.galeria.Size = new System.Drawing.Size(90, 23);
             this.galeria.TabIndex = 8;
@@ -148,7 +148,7 @@
             // agregar
             // 
             this.agregar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.agregar.Location = new System.Drawing.Point(299, 199);
+            this.agregar.Location = new System.Drawing.Point(299, 197);
             this.agregar.Name = "agregar";
             this.agregar.Size = new System.Drawing.Size(90, 23);
             this.agregar.TabIndex = 9;
@@ -163,7 +163,7 @@
             this.cancelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelar.ForeColor = System.Drawing.SystemColors.InactiveBorder;
-            this.cancelar.Location = new System.Drawing.Point(299, 237);
+            this.cancelar.Location = new System.Drawing.Point(299, 235);
             this.cancelar.Name = "cancelar";
             this.cancelar.Size = new System.Drawing.Size(90, 23);
             this.cancelar.TabIndex = 10;
@@ -211,7 +211,7 @@
             // eliminar
             // 
             this.eliminar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.eliminar.Location = new System.Drawing.Point(203, 237);
+            this.eliminar.Location = new System.Drawing.Point(203, 235);
             this.eliminar.Name = "eliminar";
             this.eliminar.Size = new System.Drawing.Size(90, 23);
             this.eliminar.TabIndex = 16;
@@ -223,7 +223,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(414, 273);
+            this.ClientSize = new System.Drawing.Size(414, 271);
             this.Controls.Add(this.eliminar);
             this.Controls.Add(this.cajaPrecio);
             this.Controls.Add(this.cajaNombre);

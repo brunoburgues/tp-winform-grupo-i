@@ -55,7 +55,7 @@ namespace BaseDatos
             AccesoBaseDatos datos = new AccesoBaseDatos();
             try
             {
-                datos.SetConsulta("insert into ARTICULOS values('"+nuevo.Codigo+"','"+nuevo.Nombre+"','"+nuevo.Descripcion+"',"+nuevo.Marca+","+nuevo.Categoria+","+nuevo.Precio+" )");
+                datos.SetConsulta("Insert into ARTICULOS values ('" + nuevo.Codigo + "', '" + nuevo.Nombre + "', '" + nuevo.Descripcion + "', " + nuevo.Marca.Id + ", " + nuevo.Categoria.Id + ", " + nuevo.Precio + ")");
                 datos.Lectura();
             }
 

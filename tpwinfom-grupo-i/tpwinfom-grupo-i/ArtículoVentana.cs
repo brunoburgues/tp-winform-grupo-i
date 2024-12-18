@@ -24,12 +24,12 @@ namespace tpwinfom_grupo_i
         {
             CategoriaDB categoriaDB = new CategoriaDB();
             listaCategoría.DataSource = categoriaDB.listarCategoria();
-            listaCategoría.ValueMember = "Id";
             listaCategoría.DisplayMember = "Nombre";
+            listaCategoría.ValueMember = "Id";
             MarcaDB marcaDB = new MarcaDB();
             listaMarca.DataSource = marcaDB.listarMarcas();
-            listaMarca.ValueMember = "Id";
             listaMarca.DisplayMember = "Nombre";
+            listaMarca.ValueMember = "Id";
 
 
             listaCategoría.SelectedIndex = -1;
@@ -38,17 +38,16 @@ namespace tpwinfom_grupo_i
         }
 
         private void agregar_Click(object sender, EventArgs e)
-        {Articulo nuevo = new Articulo();
+        {   
+            Articulo nuevo = new Articulo();
             ArticuloDB nuevoDB = new ArticuloDB();
-
-
             try
             {
                 nuevo.Codigo = cajaCódigo.Text;
                 nuevo.Nombre = cajaNombre.Text;
                 nuevo.Precio = decimal.Parse(cajaPrecio.Text);
-               // nuevo.Marca = listaCategoría.SelectedItem();
-               // nuevo.Categoria = listaCategoría.SelectedItem();
+                nuevo.Marca = (Marca)listaMarca.SelectedItem;
+                nuevo.Categoria = (Categoria)listaCategoría.SelectedItem;
                 nuevo.Descripcion = Descripción.Text;
 
                 nuevoDB.agregar(nuevo);

@@ -39,12 +39,12 @@
             this.galeria = new System.Windows.Forms.Button();
             this.agregar = new System.Windows.Forms.Button();
             this.cancelar = new System.Windows.Forms.Button();
-            this.listaMarca = new System.Windows.Forms.ListBox();
-            this.listaCategoría = new System.Windows.Forms.ListBox();
             this.cajaCódigo = new System.Windows.Forms.TextBox();
             this.cajaNombre = new System.Windows.Forms.TextBox();
             this.cajaPrecio = new System.Windows.Forms.TextBox();
             this.eliminar = new System.Windows.Forms.Button();
+            this.listaCategoría = new System.Windows.Forms.ListBox();
+            this.listaMarca = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -171,22 +171,6 @@
             this.cancelar.UseVisualStyleBackColor = false;
             this.cancelar.Click += new System.EventHandler(this.cancelar_Click);
             // 
-            // listaMarca
-            // 
-            this.listaMarca.FormattingEnabled = true;
-            this.listaMarca.Location = new System.Drawing.Point(82, 97);
-            this.listaMarca.Name = "listaMarca";
-            this.listaMarca.Size = new System.Drawing.Size(108, 17);
-            this.listaMarca.TabIndex = 11;
-            // 
-            // listaCategoría
-            // 
-            this.listaCategoría.FormattingEnabled = true;
-            this.listaCategoría.Location = new System.Drawing.Point(82, 128);
-            this.listaCategoría.Name = "listaCategoría";
-            this.listaCategoría.Size = new System.Drawing.Size(108, 17);
-            this.listaCategoría.TabIndex = 12;
-            // 
             // cajaCódigo
             // 
             this.cajaCódigo.Location = new System.Drawing.Point(132, 44);
@@ -218,6 +202,22 @@
             this.eliminar.Text = "Eliminar";
             this.eliminar.UseVisualStyleBackColor = true;
             this.eliminar.Visible = false;
+            // 
+            // listaCategoría
+            // 
+            this.listaCategoría.FormattingEnabled = true;
+            this.listaCategoría.Location = new System.Drawing.Point(82, 128);
+            this.listaCategoría.Name = "listaCategoría";
+            this.listaCategoría.Size = new System.Drawing.Size(108, 17);
+            this.listaCategoría.TabIndex = 12;
+            // 
+            // listaMarca
+            // 
+            this.listaMarca.FormattingEnabled = true;
+            this.listaMarca.Location = new System.Drawing.Point(82, 97);
+            this.listaMarca.Name = "listaMarca";
+            this.listaMarca.Size = new System.Drawing.Size(108, 17);
+            this.listaMarca.TabIndex = 11;
             // 
             // ArtículoVentana
             // 
@@ -265,11 +265,11 @@
         private System.Windows.Forms.Button galeria;
         private System.Windows.Forms.Button agregar;
         private System.Windows.Forms.Button cancelar;
-        private System.Windows.Forms.ListBox listaMarca;
-        private System.Windows.Forms.ListBox listaCategoría;
         private System.Windows.Forms.TextBox cajaCódigo;
         private System.Windows.Forms.TextBox cajaNombre;
         private System.Windows.Forms.TextBox cajaPrecio;
         private System.Windows.Forms.Button eliminar;
+        private System.Windows.Forms.ListBox listaCategoría;
+        private System.Windows.Forms.ListBox listaMarca;
     }
 }

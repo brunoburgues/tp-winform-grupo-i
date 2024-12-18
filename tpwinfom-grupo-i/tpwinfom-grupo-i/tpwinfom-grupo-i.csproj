@@ -53,6 +53,12 @@
     <Compile Include="ArtículoVentana.Designer.cs">
       <DependentUpon>ArtículoVentana.cs</DependentUpon>
     </Compile>
+    <Compile Include="Galeria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Galeria.Designer.cs">
+      <DependentUpon>Galeria.cs</DependentUpon>
+    </Compile>
     <Compile Include="menuPrincipalVentana.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -75,6 +81,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="ArtículoVentana.resx">
       <DependentUpon>ArtículoVentana.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Galeria.resx">
+      <DependentUpon>Galeria.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="menuPrincipalVentana.resx">
       <DependentUpon>menuPrincipalVentana.cs</DependentUpon>

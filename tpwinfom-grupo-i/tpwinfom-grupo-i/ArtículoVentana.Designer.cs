@@ -31,8 +31,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.Descripción = new System.Windows.Forms.TextBox();
+            this.pictureBoxImagenes = new System.Windows.Forms.PictureBox();
+            this.cajaDescripcion = new System.Windows.Forms.TextBox();
             this.marca = new System.Windows.Forms.Label();
             this.Categoría = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -45,7 +45,7 @@
             this.cajaNombre = new System.Windows.Forms.TextBox();
             this.cajaPrecio = new System.Windows.Forms.TextBox();
             this.eliminar = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImagenes)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -75,39 +75,42 @@
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(22, 71);
+            this.label3.Location = new System.Drawing.Point(22, 73);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(44, 13);
             this.label3.TabIndex = 2;
             this.label3.Text = "Nombre";
             // 
-            // pictureBox1
+            // pictureBoxImagenes
             // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.pictureBoxImagenes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Location = new System.Drawing.Point(203, 13);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(186, 171);
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
+            this.pictureBoxImagenes.Location = new System.Drawing.Point(203, 13);
+            this.pictureBoxImagenes.Name = "pictureBoxImagenes";
+            this.pictureBoxImagenes.Size = new System.Drawing.Size(186, 171);
+            this.pictureBoxImagenes.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxImagenes.TabIndex = 3;
+            this.pictureBoxImagenes.TabStop = false;
             // 
-            // Descripción
+            // cajaDescripcion
             // 
-            this.Descripción.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.cajaDescripcion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.Descripción.Location = new System.Drawing.Point(25, 199);
-            this.Descripción.Multiline = true;
-            this.Descripción.Name = "Descripción";
-            this.Descripción.Size = new System.Drawing.Size(165, 62);
-            this.Descripción.TabIndex = 4;
+            this.cajaDescripcion.ForeColor = System.Drawing.Color.Gray;
+            this.cajaDescripcion.Location = new System.Drawing.Point(25, 185);
+            this.cajaDescripcion.Multiline = true;
+            this.cajaDescripcion.Name = "cajaDescripcion";
+            this.cajaDescripcion.Size = new System.Drawing.Size(165, 76);
+            this.cajaDescripcion.TabIndex = 4;
+            this.cajaDescripcion.Text = "Descripcion...";
             // 
             // marca
             // 
             this.marca.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.marca.AutoSize = true;
-            this.marca.Location = new System.Drawing.Point(22, 101);
+            this.marca.Location = new System.Drawing.Point(22, 103);
             this.marca.Name = "marca";
             this.marca.Size = new System.Drawing.Size(37, 13);
             this.marca.TabIndex = 5;
@@ -118,7 +121,7 @@
             this.Categoría.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Categoría.AutoSize = true;
-            this.Categoría.Location = new System.Drawing.Point(22, 127);
+            this.Categoría.Location = new System.Drawing.Point(22, 125);
             this.Categoría.Name = "Categoría";
             this.Categoría.Size = new System.Drawing.Size(54, 13);
             this.Categoría.TabIndex = 6;
@@ -129,7 +132,7 @@
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(22, 166);
+            this.label6.Location = new System.Drawing.Point(22, 151);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(37, 13);
             this.label6.TabIndex = 7;
@@ -144,6 +147,7 @@
             this.galeria.TabIndex = 8;
             this.galeria.Text = "Galería";
             this.galeria.UseVisualStyleBackColor = true;
+            this.galeria.Click += new System.EventHandler(this.galeria_Click);
             // 
             // agregar
             // 
@@ -174,7 +178,7 @@
             // listaMarca
             // 
             this.listaMarca.FormattingEnabled = true;
-            this.listaMarca.Location = new System.Drawing.Point(82, 97);
+            this.listaMarca.Location = new System.Drawing.Point(82, 99);
             this.listaMarca.Name = "listaMarca";
             this.listaMarca.Size = new System.Drawing.Size(108, 17);
             this.listaMarca.TabIndex = 11;
@@ -182,7 +186,7 @@
             // listaCategoría
             // 
             this.listaCategoría.FormattingEnabled = true;
-            this.listaCategoría.Location = new System.Drawing.Point(82, 128);
+            this.listaCategoría.Location = new System.Drawing.Point(82, 125);
             this.listaCategoría.Name = "listaCategoría";
             this.listaCategoría.Size = new System.Drawing.Size(108, 17);
             this.listaCategoría.TabIndex = 12;
@@ -196,14 +200,14 @@
             // 
             // cajaNombre
             // 
-            this.cajaNombre.Location = new System.Drawing.Point(82, 68);
+            this.cajaNombre.Location = new System.Drawing.Point(82, 70);
             this.cajaNombre.Name = "cajaNombre";
             this.cajaNombre.Size = new System.Drawing.Size(108, 20);
             this.cajaNombre.TabIndex = 14;
             // 
             // cajaPrecio
             // 
-            this.cajaPrecio.Location = new System.Drawing.Point(82, 164);
+            this.cajaPrecio.Location = new System.Drawing.Point(82, 149);
             this.cajaPrecio.Name = "cajaPrecio";
             this.cajaPrecio.Size = new System.Drawing.Size(108, 20);
             this.cajaPrecio.TabIndex = 15;
@@ -236,8 +240,8 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.Categoría);
             this.Controls.Add(this.marca);
-            this.Controls.Add(this.Descripción);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.cajaDescripcion);
+            this.Controls.Add(this.pictureBoxImagenes);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -246,7 +250,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Agregar Artículo";
             this.Load += new System.EventHandler(this.ArtículoVentana_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImagenes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -257,8 +261,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TextBox Descripción;
+        private System.Windows.Forms.PictureBox pictureBoxImagenes;
+        private System.Windows.Forms.TextBox cajaDescripcion;
         private System.Windows.Forms.Label marca;
         private System.Windows.Forms.Label Categoría;
         private System.Windows.Forms.Label label6;

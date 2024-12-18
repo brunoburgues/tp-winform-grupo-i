@@ -30,6 +30,9 @@ namespace tpwinfom_grupo_i
             dgwArticulos.Columns["Id"].Visible = false;
             dgwArticulos.Columns["Codigo"].Visible = false;
             dgwArticulos.Columns["Descripcion"].Visible = false;
+
+            cbSeleccionarFiltro.Items.Add("Categoria");
+            cbSeleccionarFiltro.Items.Add("Marca");
         }
 
         private void agregarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -42,6 +45,26 @@ namespace tpwinfom_grupo_i
         {
             string busqueda = tbBusqueda.Text;
             dgwArticulos.DataSource = list.FindAll(a => a.Nombre.IndexOf(busqueda, StringComparison.OrdinalIgnoreCase) >= 0);
+        }
+
+        private void dgwArticulos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Articulo seleccionado = (Articulo)dgwArticulos.Rows[e.RowIndex].DataBoundItem; 
+        }
+
+        private void cbSeleccionarFiltro_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbSeleccionarFiltro.SelectedIndex == 0)
+            {
+                CategoriaDB categoriaDB = new CategoriaDB();
+                cbFiltro.DataSource = categoriaDB.listarCategoria();
+            }
+
+            if (cbFiltro.SelectedIndex == 1)
+            {
+                MarcaDB marcaDB = new MarcaDB();
+                cbFiltro.DataSource = marcaDB.listarMarcas();
+            }
         }
     }
 }

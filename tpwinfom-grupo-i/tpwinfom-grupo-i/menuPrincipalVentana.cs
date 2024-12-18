@@ -44,7 +44,18 @@ namespace tpwinfom_grupo_i
         private void btnBusqueda_Click(object sender, EventArgs e)
         {
             string busqueda = tbBusqueda.Text;
-            dgwArticulos.DataSource = list.FindAll(a => a.Nombre.IndexOf(busqueda, StringComparison.OrdinalIgnoreCase) >= 0);
+            List<Articulo> listaFiltrada = list.FindAll(a => a.Nombre.IndexOf(busqueda, StringComparison.OrdinalIgnoreCase) >= 0);
+            if (cbSeleccionarFiltro.SelectedIndex == 0)
+            {
+                Categoria categoria = (Categoria)cbFiltro.SelectedItem;
+                listaFiltrada = listaFiltrada.FindAll(A => A.Categoria.Id == categoria.Id);
+            }
+            if (cbSeleccionarFiltro.SelectedIndex == 1)
+            {
+                Marca marca = (Marca)cbFiltro.SelectedItem;
+                listaFiltrada = listaFiltrada.FindAll(A => A.Marca.Id == marca.Id);
+            }
+            dgwArticulos.DataSource = listaFiltrada;
         }
 
         private void dgwArticulos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

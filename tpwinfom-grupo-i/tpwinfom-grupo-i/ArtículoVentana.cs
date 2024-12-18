@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Dominio;
+
 
 namespace tpwinfom_grupo_i
 {
@@ -36,7 +38,29 @@ namespace tpwinfom_grupo_i
         }
 
         private void agregar_Click(object sender, EventArgs e)
-        {
+        {Articulo nuevo = new Articulo();
+            ArticuloDB nuevoDB = new ArticuloDB();
+
+
+            try
+            {
+                nuevo.Codigo = cajaCódigo.Text;
+                nuevo.Nombre = cajaNombre.Text;
+                nuevo.Precio = decimal.Parse(cajaPrecio.Text);
+               // nuevo.Marca = listaCategoría.SelectedItem();
+               // nuevo.Categoria = listaCategoría.SelectedItem();
+                nuevo.Descripcion = Descripción.Text;
+
+                nuevoDB.agregar(nuevo);
+                MessageBox.Show("Agregado exitoso");
+                Close();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+
 
         }
 

@@ -50,5 +50,26 @@ namespace BaseDatos
                 db.CloseConexion();
             }
         }
+        public void agregar (Articulo nuevo)
+        {
+            AccesoBaseDatos datos = new AccesoBaseDatos();
+            try
+            {
+                datos.SetConsulta("insert into ARTICULOS values('"+nuevo.Codigo+"','"+nuevo.Nombre+"','"+nuevo.Descripcion+"',"+nuevo.Marca+","+nuevo.Categoria+","+nuevo.Precio+" )");
+                datos.Lectura();
+            }
+
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+
+                datos.CloseConexion();
+            }
+
+        }
     }
 }

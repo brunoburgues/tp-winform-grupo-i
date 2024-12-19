@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Dominio;
+//using Dominio;
 
 
 namespace tpwinfom_grupo_i
@@ -21,8 +21,11 @@ namespace tpwinfom_grupo_i
             InitializeComponent();
         }
         Articulo nuevoArticulo;
+
+        //
+        List<string> listaImagenes;
         //Métodos
-        
+
         //Eventos
         private void ArtículoVentana_Load(object sender, EventArgs e)
         {
@@ -47,6 +50,7 @@ namespace tpwinfom_grupo_i
         {   
             Articulo nuevo = new Articulo();
             ArticuloDB nuevoDB = new ArticuloDB();
+            ImagenDB imagenesDB = new ImagenDB();
             try
             {
                 nuevo.Codigo = cajaCódigo.Text;
@@ -57,6 +61,9 @@ namespace tpwinfom_grupo_i
                 nuevo.Descripcion = cajaDescripcion.Text;
 
                 nuevoDB.agregar(nuevo);
+
+                nuevo = nuevoDB.TraerUltimoArticulo();
+                imagenesDB.AgregarImagenes(nuevo.Id,listaImagenes);
                 MessageBox.Show("Agregado exitoso");
                 Close();
             }
@@ -76,6 +83,33 @@ namespace tpwinfom_grupo_i
         {
             Galeria ventanaGaleria = new Galeria();
             ventanaGaleria.ShowDialog();
+
+            if (ventanaGaleria.Seleccionadas)
+            {
+                listaImagenes = ventanaGaleria.Imagenes;
+                pictureBoxImagenes.Load(listaImagenes[0]);
+            }
+            
+        }
+
+        private void listaMarca_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int selectedIndex = listaMarca.SelectedIndex;
+
+            if (selectedIndex != -1)
+            {
+                listaMarca.SelectedItem = listaMarca.Items[selectedIndex];
+            }
+        }
+
+        private void listaCategoría_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int selectedIndex = listaCategoría.SelectedIndex;
+
+            if (selectedIndex != -1)
+            {
+                listaCategoría.SelectedItem = listaCategoría.Items[selectedIndex];
+            }
         }
     }
 }

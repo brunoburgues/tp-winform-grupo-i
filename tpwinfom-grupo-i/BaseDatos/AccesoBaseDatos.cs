@@ -49,6 +49,9 @@ namespace BaseDatos
                 reader.Close();
             conexion.Close();
         }
-        
+        public void setParametro(string nombre, object valor)
+        {
+            comando.Parameters.AddWithValue(nombre, valor);
+        }
     }
 }

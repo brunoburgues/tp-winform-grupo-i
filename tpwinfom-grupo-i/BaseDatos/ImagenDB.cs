@@ -36,6 +36,33 @@ namespace BaseDatos
 			{
 				db.CloseConexion();
 			}
+
         }
+
+        public void AgregarImagenes(int idArticulo, List<string> urlsImagenes)
+        {
+            AccesoBaseDatos datos = new AccesoBaseDatos();
+            try
+            {
+
+                foreach (string urlImagen in urlsImagenes)
+                {
+                    datos.SetConsulta("INSERT INTO IMAGENES (IdArticulo, Url) VALUES (@IdArticulo, @Url)");
+                    datos.setParametro("@IdArticulo", idArticulo);
+                    datos.setParametro("@Url", urlImagen);
+
+                    datos.Lectura();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.CloseConexion();
+            }
+        }
+
     }
 }

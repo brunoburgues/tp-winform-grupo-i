@@ -88,6 +88,42 @@ namespace BaseDatos
                 throw ex;
             }
         }
+        public Articulo TraerUltimoArticulo()
+        {
+            AccesoBaseDatos datos = new AccesoBaseDatos();
+            try
+            {
+                datos.SetConsulta("select Id, Codigo, Nombre, Descripcion, IdMarca, IdCategoria, Precio from ARTICULOS order by Id desc limit 1;");
+
+                datos.Lectura();
+
+                Articulo ultimoArticulo = null;
+                if (datos.Reader.Read())
+                {
+                    ultimoArticulo = new Articulo
+                    {
+                        Id = (int)datos.Reader["Id"],
+                        Codigo = (string)datos.Reader["Codigo"],
+                        Nombre = (string)datos.Reader["Nombre"],
+                        Descripcion = (string)datos.Reader["Descripcion"],
+                        Marca = new Marca { Id = (int)datos.Reader["IdMarca"] },
+                        Categoria = new Categoria { Id = (int)datos.Reader["IdCategoria"] },
+                        Precio = (decimal)datos.Reader["Precio"]
+                    };
+                }
+
+                return ultimoArticulo;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.CloseConexion();
+            }
+        }
+
     }
 
 }

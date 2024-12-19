@@ -8,7 +8,7 @@ using Dominio;
 
 namespace BaseDatos
 {
-    public class ArticuloDB
+    public class ArticuloDB 
     {
         public List<Articulo> ListarArticulos()
         {
@@ -35,7 +35,7 @@ namespace BaseDatos
                     ImagenDB listaImagen = new ImagenDB();
                     List<Imagen> listaImagenes = listaImagen.ListarImagenes(auxA.Id);
                     auxA.Imagenes = listaImagenes;
-                    
+
                     lista.Add(auxA);
                 }
                 return lista;
@@ -50,5 +50,44 @@ namespace BaseDatos
                 db.CloseConexion();
             }
         }
+        public void agregar(Articulo nuevo)
+        {
+            AccesoBaseDatos datos = new AccesoBaseDatos();
+            try
+            {
+                datos.SetConsulta("Insert into ARTICULOS values ('" + nuevo.Codigo + "', '" + nuevo.Nombre + "', '" + nuevo.Descripcion + "', " + nuevo.Marca.Id + ", " + nuevo.Categoria.Id + ", " + nuevo.Precio + ")");
+                datos.Lectura();
+            }
+
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+
+                datos.CloseConexion();
+            }
+
+        }
+
+        public void eliminar(int id)
+        {
+            try
+            {
+                AccesoBaseDatos datos = new AccesoBaseDatos();
+                datos.SetConsulta("delete from ARTICULOS where id = @id");
+                datos.setearparametros("@id", id);
+                datos.ejecutarAccion();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
+
 }

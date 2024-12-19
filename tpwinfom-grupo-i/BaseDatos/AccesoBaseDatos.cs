@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using Dominio;
 
 namespace BaseDatos
 {
@@ -42,6 +43,23 @@ namespace BaseDatos
             }
 
         }
+        public void setearparametros(string nombre, object valor)
+        {
+            comando.Parameters.AddWithValue(nombre, valor);
+        }
+        public void ejecutarAccion()
+        {
+            comando.Connection = conexion;
+            try
+            {
+                conexion.Open();
+                comando.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
         public void CloseConexion()
         {
@@ -49,5 +67,6 @@ namespace BaseDatos
                 reader.Close();
             conexion.Close();
         }
+        
     }
 }

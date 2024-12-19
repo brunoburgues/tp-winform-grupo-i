@@ -33,7 +33,28 @@ namespace BaseDatos
                 throw ex;
             }
             finally { datos.CloseConexion(); }
-        }	
+        }
+
+        public void agregar(string nombre)
+        {
+            AccesoBaseDatos datos = new AccesoBaseDatos();
+            try
+            {
+                datos.SetConsulta("Insert into Categorias (descripcion) values ('" + nombre + "' )");
+                datos.Lectura();
+            }
+
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+
+                datos.CloseConexion();
+            }
+        }
 
     }
 }

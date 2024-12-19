@@ -39,13 +39,17 @@
             this.galeria = new System.Windows.Forms.Button();
             this.agregar = new System.Windows.Forms.Button();
             this.cancelar = new System.Windows.Forms.Button();
-            this.listaMarca = new System.Windows.Forms.ListBox();
-            this.listaCategoría = new System.Windows.Forms.ListBox();
             this.cajaCódigo = new System.Windows.Forms.TextBox();
             this.cajaNombre = new System.Windows.Forms.TextBox();
             this.cajaPrecio = new System.Windows.Forms.TextBox();
             this.eliminar = new System.Windows.Forms.Button();
+<<<<<<< HEAD
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImagenes)).BeginInit();
+=======
+            this.listaCategoría = new System.Windows.Forms.ListBox();
+            this.listaMarca = new System.Windows.Forms.ListBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+>>>>>>> fb676e5c7c60854312c6ac1b953a58c3985b4f9b
             this.SuspendLayout();
             // 
             // label1
@@ -86,17 +90,26 @@
             this.pictureBoxImagenes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+<<<<<<< HEAD
             this.pictureBoxImagenes.Location = new System.Drawing.Point(203, 13);
             this.pictureBoxImagenes.Name = "pictureBoxImagenes";
             this.pictureBoxImagenes.Size = new System.Drawing.Size(186, 171);
             this.pictureBoxImagenes.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxImagenes.TabIndex = 3;
             this.pictureBoxImagenes.TabStop = false;
+=======
+            this.pictureBox1.Location = new System.Drawing.Point(203, 13);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(186, 169);
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
+>>>>>>> fb676e5c7c60854312c6ac1b953a58c3985b4f9b
             // 
             // cajaDescripcion
             // 
             this.cajaDescripcion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+<<<<<<< HEAD
             this.cajaDescripcion.ForeColor = System.Drawing.Color.Gray;
             this.cajaDescripcion.Location = new System.Drawing.Point(25, 185);
             this.cajaDescripcion.Multiline = true;
@@ -104,6 +117,13 @@
             this.cajaDescripcion.Size = new System.Drawing.Size(165, 76);
             this.cajaDescripcion.TabIndex = 4;
             this.cajaDescripcion.Text = "Descripcion...";
+=======
+            this.Descripción.Location = new System.Drawing.Point(25, 199);
+            this.Descripción.Multiline = true;
+            this.Descripción.Name = "Descripción";
+            this.Descripción.Size = new System.Drawing.Size(165, 60);
+            this.Descripción.TabIndex = 4;
+>>>>>>> fb676e5c7c60854312c6ac1b953a58c3985b4f9b
             // 
             // marca
             // 
@@ -141,7 +161,7 @@
             // galeria
             // 
             this.galeria.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.galeria.Location = new System.Drawing.Point(203, 199);
+            this.galeria.Location = new System.Drawing.Point(203, 197);
             this.galeria.Name = "galeria";
             this.galeria.Size = new System.Drawing.Size(90, 23);
             this.galeria.TabIndex = 8;
@@ -152,7 +172,7 @@
             // agregar
             // 
             this.agregar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.agregar.Location = new System.Drawing.Point(299, 199);
+            this.agregar.Location = new System.Drawing.Point(299, 197);
             this.agregar.Name = "agregar";
             this.agregar.Size = new System.Drawing.Size(90, 23);
             this.agregar.TabIndex = 9;
@@ -167,7 +187,7 @@
             this.cancelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelar.ForeColor = System.Drawing.SystemColors.InactiveBorder;
-            this.cancelar.Location = new System.Drawing.Point(299, 237);
+            this.cancelar.Location = new System.Drawing.Point(299, 235);
             this.cancelar.Name = "cancelar";
             this.cancelar.Size = new System.Drawing.Size(90, 23);
             this.cancelar.TabIndex = 10;
@@ -175,6 +195,7 @@
             this.cancelar.UseVisualStyleBackColor = false;
             this.cancelar.Click += new System.EventHandler(this.cancelar_Click);
             // 
+<<<<<<< HEAD
             // listaMarca
             // 
             this.listaMarca.FormattingEnabled = true;
@@ -191,6 +212,8 @@
             this.listaCategoría.Size = new System.Drawing.Size(108, 17);
             this.listaCategoría.TabIndex = 12;
             // 
+=======
+>>>>>>> fb676e5c7c60854312c6ac1b953a58c3985b4f9b
             // cajaCódigo
             // 
             this.cajaCódigo.Location = new System.Drawing.Point(132, 44);
@@ -215,19 +238,36 @@
             // eliminar
             // 
             this.eliminar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.eliminar.Location = new System.Drawing.Point(203, 237);
+            this.eliminar.Location = new System.Drawing.Point(203, 235);
             this.eliminar.Name = "eliminar";
             this.eliminar.Size = new System.Drawing.Size(90, 23);
             this.eliminar.TabIndex = 16;
             this.eliminar.Text = "Eliminar";
             this.eliminar.UseVisualStyleBackColor = true;
             this.eliminar.Visible = false;
+            this.eliminar.Click += new System.EventHandler(this.eliminar_Click);
+            // 
+            // listaCategoría
+            // 
+            this.listaCategoría.FormattingEnabled = true;
+            this.listaCategoría.Location = new System.Drawing.Point(82, 128);
+            this.listaCategoría.Name = "listaCategoría";
+            this.listaCategoría.Size = new System.Drawing.Size(108, 17);
+            this.listaCategoría.TabIndex = 12;
+            // 
+            // listaMarca
+            // 
+            this.listaMarca.FormattingEnabled = true;
+            this.listaMarca.Location = new System.Drawing.Point(82, 97);
+            this.listaMarca.Name = "listaMarca";
+            this.listaMarca.Size = new System.Drawing.Size(108, 17);
+            this.listaMarca.TabIndex = 11;
             // 
             // ArtículoVentana
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(414, 273);
+            this.ClientSize = new System.Drawing.Size(414, 271);
             this.Controls.Add(this.eliminar);
             this.Controls.Add(this.cajaPrecio);
             this.Controls.Add(this.cajaNombre);
@@ -269,11 +309,11 @@
         private System.Windows.Forms.Button galeria;
         private System.Windows.Forms.Button agregar;
         private System.Windows.Forms.Button cancelar;
-        private System.Windows.Forms.ListBox listaMarca;
-        private System.Windows.Forms.ListBox listaCategoría;
         private System.Windows.Forms.TextBox cajaCódigo;
         private System.Windows.Forms.TextBox cajaNombre;
         private System.Windows.Forms.TextBox cajaPrecio;
         private System.Windows.Forms.Button eliminar;
+        private System.Windows.Forms.ListBox listaCategoría;
+        private System.Windows.Forms.ListBox listaMarca;
     }
 }

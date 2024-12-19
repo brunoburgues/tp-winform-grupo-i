@@ -88,5 +88,17 @@ namespace tpwinfom_grupo_i
             tbBusqueda.Text = "";
             dgwArticulos.DataSource = list;
         }
+
+        private void agregarToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Agregar agregar = new Agregar(0);
+            agregar.ShowDialog();
+        }
+
+        private void agregarToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            Agregar agregar = new Agregar(1);
+            agregar.ShowDialog();
+        }
     }
 }

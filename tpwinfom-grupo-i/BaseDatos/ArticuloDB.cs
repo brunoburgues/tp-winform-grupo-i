@@ -8,7 +8,7 @@ using Dominio;
 
 namespace BaseDatos
 {
-    public class ArticuloDB : ArticuloDBBase
+    public class ArticuloDB 
     {
         public List<Articulo> ListarArticulos()
         {

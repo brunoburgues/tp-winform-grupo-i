@@ -74,8 +74,8 @@ namespace tpwinfom_grupo_i
             Articulo seleccionado;
             try
             {
-                seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBound;
-                nuevo.eliminar(seleccionado.id);
+               /* seleccionado = (Articulo)dgwArticulos.CurrentRow.DataBound;
+                nuevo.eliminar(seleccionado.id);*/
                 
             }
             catch (Exception)

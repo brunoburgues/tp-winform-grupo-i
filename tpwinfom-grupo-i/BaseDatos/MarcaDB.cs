@@ -33,12 +33,12 @@ namespace BaseDatos
             }
             finally { datos.CloseConexion(); }
         }
-        public void agregar(Marca nuevo)
+        public void agregar(string nombre)
         {
             AccesoBaseDatos datos = new AccesoBaseDatos();
             try
             {
-                datos.SetConsulta("Insert into Marcas(descripcion) values ('" + nuevo.Nombre + "' )");
+                datos.SetConsulta("Insert into Marcas(descripcion) values ('" + nombre + "' )");
                 datos.Lectura();
             }
 
@@ -53,5 +53,5 @@ namespace BaseDatos
                 datos.CloseConexion();
             }
         }
-}
     }
+}

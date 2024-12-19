@@ -63,7 +63,12 @@ namespace tpwinfom_grupo_i
                 nuevoDB.agregar(nuevo);
 
                 nuevo = nuevoDB.TraerUltimoArticulo();
-                imagenesDB.AgregarImagenes(nuevo.Id,listaImagenes);
+                //Guarda una imagen por vez
+                foreach (string imagen in listaImagenes)
+                {
+                    imagenesDB.AgregarImagen(nuevo.Id, imagen);
+                }
+                
                 MessageBox.Show("Agregado exitoso");
                 Close();
             }

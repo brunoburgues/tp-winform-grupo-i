@@ -93,7 +93,7 @@ namespace BaseDatos
             AccesoBaseDatos datos = new AccesoBaseDatos();
             try
             {
-                datos.SetConsulta("select Id, Codigo, Nombre, Descripcion, IdMarca, IdCategoria, Precio from ARTICULOS order by Id desc limit 1;");
+                datos.SetConsulta("select TOP 1 Id, Codigo, Nombre, Descripcion, IdMarca, IdCategoria, Precio from ARTICULOS order by Id desc;");
 
                 datos.Lectura();
 

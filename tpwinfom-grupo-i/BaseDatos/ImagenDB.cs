@@ -39,20 +39,16 @@ namespace BaseDatos
 
         }
 
-        public void AgregarImagenes(int idArticulo, List<string> urlsImagenes)
+        public void AgregarImagen(int idArticulo, string imagen)
         {
             AccesoBaseDatos datos = new AccesoBaseDatos();
             try
             {
+                datos.SetConsulta("INSERT INTO IMAGENES (IdArticulo, ImagenUrl) VALUES (@IdArticulo, @Url)");
+                datos.setParametro("@IdArticulo", idArticulo);
+                datos.setParametro("@Url", imagen);
 
-                foreach (string urlImagen in urlsImagenes)
-                {
-                    datos.SetConsulta("INSERT INTO IMAGENES (IdArticulo, Url) VALUES (@IdArticulo, @Url)");
-                    datos.setParametro("@IdArticulo", idArticulo);
-                    datos.setParametro("@Url", urlImagen);
-
-                    datos.Lectura();
-                }
+                datos.ejecutarAccion();
             }
             catch (Exception ex)
             {

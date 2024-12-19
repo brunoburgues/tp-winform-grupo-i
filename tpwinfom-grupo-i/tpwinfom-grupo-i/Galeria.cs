@@ -7,7 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using Dominio;
+using BaseDatos;
 namespace tpwinfom_grupo_i
 {
     public partial class Galeria : Form

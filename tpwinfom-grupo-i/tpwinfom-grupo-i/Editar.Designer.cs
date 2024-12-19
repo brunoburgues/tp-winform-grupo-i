@@ -36,6 +36,7 @@
             this.lbEditar = new System.Windows.Forms.Label();
             this.lbObjeto = new System.Windows.Forms.Label();
             this.tbBuscar = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,17 +55,17 @@
             // 
             this.lbNombre.AutoSize = true;
             this.lbNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbNombre.Location = new System.Drawing.Point(189, 123);
+            this.lbNombre.Location = new System.Drawing.Point(189, 84);
             this.lbNombre.Name = "lbNombre";
-            this.lbNombre.Size = new System.Drawing.Size(69, 20);
+            this.lbNombre.Size = new System.Drawing.Size(116, 20);
             this.lbNombre.TabIndex = 1;
-            this.lbNombre.Text = "Nombre:";
+            this.lbNombre.Text = "Nuevo nombre:";
             // 
             // tbNombre
             // 
-            this.tbNombre.Location = new System.Drawing.Point(264, 123);
+            this.tbNombre.Location = new System.Drawing.Point(193, 124);
             this.tbNombre.Name = "tbNombre";
-            this.tbNombre.Size = new System.Drawing.Size(116, 20);
+            this.tbNombre.Size = new System.Drawing.Size(168, 20);
             this.tbNombre.TabIndex = 2;
             // 
             // btnConfirmar
@@ -73,7 +74,7 @@
             this.btnConfirmar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnConfirmar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConfirmar.ForeColor = System.Drawing.Color.White;
-            this.btnConfirmar.Location = new System.Drawing.Point(193, 186);
+            this.btnConfirmar.Location = new System.Drawing.Point(193, 178);
             this.btnConfirmar.Name = "btnConfirmar";
             this.btnConfirmar.Size = new System.Drawing.Size(81, 28);
             this.btnConfirmar.TabIndex = 3;
@@ -82,11 +83,11 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.BackColor = System.Drawing.Color.Brown;
+            this.btnCancelar.BackColor = System.Drawing.Color.CornflowerBlue;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.Color.White;
-            this.btnCancelar.Location = new System.Drawing.Point(280, 186);
+            this.btnCancelar.Location = new System.Drawing.Point(280, 178);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(81, 28);
             this.btnCancelar.TabIndex = 4;
@@ -122,11 +123,25 @@
             this.tbBuscar.TabIndex = 7;
             this.tbBuscar.TextChanged += new System.EventHandler(this.tbBuscar_TextChanged);
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Brown;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(193, 214);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(168, 28);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "Eliminar";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
             // Editar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(404, 261);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.tbBuscar);
             this.Controls.Add(this.lbObjeto);
             this.Controls.Add(this.lbEditar);
@@ -153,5 +168,6 @@
         private System.Windows.Forms.Label lbEditar;
         private System.Windows.Forms.Label lbObjeto;
         private System.Windows.Forms.TextBox tbBuscar;
+        private System.Windows.Forms.Button button1;
     }
 }

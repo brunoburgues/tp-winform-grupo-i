@@ -35,17 +35,18 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.lbEditar = new System.Windows.Forms.Label();
             this.lbObjeto = new System.Windows.Forms.Label();
+            this.tbBuscar = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.SuspendLayout();
             // 
             // dgv
             // 
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv.Location = new System.Drawing.Point(23, 61);
+            this.dgv.Location = new System.Drawing.Point(23, 84);
             this.dgv.MultiSelect = false;
             this.dgv.Name = "dgv";
             this.dgv.ReadOnly = true;
-            this.dgv.Size = new System.Drawing.Size(144, 181);
+            this.dgv.Size = new System.Drawing.Size(144, 158);
             this.dgv.TabIndex = 0;
             this.dgv.SelectionChanged += new System.EventHandler(this.dgv_SelectionChanged);
             // 
@@ -91,6 +92,7 @@
             this.btnCancelar.TabIndex = 4;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // lbEditar
             // 
@@ -112,11 +114,20 @@
             this.lbObjeto.TabIndex = 6;
             this.lbObjeto.Text = "...";
             // 
+            // tbBuscar
+            // 
+            this.tbBuscar.Location = new System.Drawing.Point(23, 58);
+            this.tbBuscar.Name = "tbBuscar";
+            this.tbBuscar.Size = new System.Drawing.Size(144, 20);
+            this.tbBuscar.TabIndex = 7;
+            this.tbBuscar.TextChanged += new System.EventHandler(this.tbBuscar_TextChanged);
+            // 
             // Editar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(404, 261);
+            this.Controls.Add(this.tbBuscar);
             this.Controls.Add(this.lbObjeto);
             this.Controls.Add(this.lbEditar);
             this.Controls.Add(this.btnCancelar);
@@ -141,5 +152,6 @@
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Label lbEditar;
         private System.Windows.Forms.Label lbObjeto;
+        private System.Windows.Forms.TextBox tbBuscar;
     }
 }

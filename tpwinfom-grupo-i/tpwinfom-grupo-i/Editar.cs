@@ -14,6 +14,8 @@ namespace tpwinfom_grupo_i
 {
     public partial class Editar : Form
     {
+        List<Marca> marcas;
+        List<Categoria> categorias;
         public Editar(int i)
         {
             InitializeComponent();
@@ -21,12 +23,14 @@ namespace tpwinfom_grupo_i
             {
                 lbObjeto.Text = "Marca";
                 MarcaDB marcaDB = new MarcaDB();
-                dgv.DataSource = marcaDB.listarMarcas();
+                marcas = marcaDB.listarMarcas();
+                dgv.DataSource = marcas;
             }else
             {
                 lbObjeto.Text = "Categoria";
                 CategoriaDB categoriaDB = new CategoriaDB();
-                dgv.DataSource = categoriaDB.listarCategoria();
+                categorias = categoriaDB.listarCategoria(); 
+                dgv.DataSource = categorias;
             }
             dgv.Columns["Id"].Visible = false;
         }
@@ -42,6 +46,22 @@ namespace tpwinfom_grupo_i
                 Categoria categoria = (Categoria)dgv.CurrentRow.DataBoundItem;
                 tbNombre.Text = categoria.Nombre;
             }
+        }
+
+        private void tbBuscar_TextChanged(object sender, EventArgs e)
+        {
+            if (lbObjeto.Text == "Marca")
+            {
+                dgv.DataSource = marcas.FindAll(a => a.Nombre.IndexOf(tbBuscar.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+            }else
+            {
+                dgv.DataSource = categorias.FindAll(A => A.Nombre.IndexOf(tbBuscar.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+            }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

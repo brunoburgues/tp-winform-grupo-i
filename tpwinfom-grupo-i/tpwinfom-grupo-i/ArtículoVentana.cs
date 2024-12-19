@@ -67,5 +67,22 @@ namespace tpwinfom_grupo_i
         {
             Close();
         }
+
+        private void eliminar_Click(object sender, EventArgs e)
+        {
+            ArticuloDB nuevo = new ArticuloDB();
+            Articulo seleccionado;
+            try
+            {
+                seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBound;
+                nuevo.eliminar(seleccionado.id);
+                
+            }
+            catch (Exception)
+            {
+               
+                throw;
+            }
+        }
     }
 }

@@ -202,6 +202,7 @@
             this.eliminar.Text = "Eliminar";
             this.eliminar.UseVisualStyleBackColor = true;
             this.eliminar.Visible = false;
+            this.eliminar.Click += new System.EventHandler(this.eliminar_Click);
             // 
             // listaCategoría
             // 

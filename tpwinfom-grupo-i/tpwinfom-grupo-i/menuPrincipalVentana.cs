@@ -100,5 +100,17 @@ namespace tpwinfom_grupo_i
             Agregar agregar = new Agregar(1);
             agregar.ShowDialog();
         }
+
+        private void editarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Editar editar = new Editar(0);
+            editar.ShowDialog();
+        }
+
+        private void editarToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Editar editar1 = new Editar(1); 
+            editar1.ShowDialog();
+        }
     }
 }

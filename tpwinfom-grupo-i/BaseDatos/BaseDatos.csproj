@@ -43,7 +43,6 @@
   <ItemGroup>
     <Compile Include="AccesoBaseDatos.cs" />
     <Compile Include="ArticuloDB.cs" />
-    <Compile Include="ArticuloDBBase.cs" />
     <Compile Include="CategoriaDB.cs" />
     <Compile Include="ImagenDB.cs" />
     <Compile Include="MarcaDB.cs" />

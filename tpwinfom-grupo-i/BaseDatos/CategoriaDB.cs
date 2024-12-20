@@ -3,13 +3,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace BaseDatos
 {
     public class CategoriaDB
     {
-	    public List<Categoria> listarCategoria()
+        public List<Categoria> listarCategoria()
         {
             List<Categoria> listaCategorias = new List<Categoria>();
             AccesoBaseDatos datos = new AccesoBaseDatos();
@@ -34,7 +35,6 @@ namespace BaseDatos
             }
             finally { datos.CloseConexion(); }
         }
-
         public void agregar(string nombre)
         {
             AccesoBaseDatos datos = new AccesoBaseDatos();
@@ -55,6 +55,42 @@ namespace BaseDatos
                 datos.CloseConexion();
             }
         }
+        public void editar(Categoria categoria, string nombre)
+        {
+            AccesoBaseDatos accesoBaseDatos = new AccesoBaseDatos();
+            try
+            {
+                accesoBaseDatos.SetConsulta("Update Categorias Set Descripcion = '" + nombre + "' where Id = " + categoria.Id.ToString());
+                accesoBaseDatos.Lectura();
+            }
+            catch (Exception ex)
+            {
 
+                throw ex;
+            }
+            finally
+            {
+                accesoBaseDatos.CloseConexion();
+            }
+        }
+        public void eliminar(int id)
+        {
+            AccesoBaseDatos accesoBaseDatos = new AccesoBaseDatos();
+            try
+            {
+                accesoBaseDatos.SetConsulta("Delete Categorias where Id = " + id);
+                accesoBaseDatos.Lectura();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+
+            }
+            finally
+            {
+                accesoBaseDatos.CloseConexion();
+            }
+        }
     }
 }

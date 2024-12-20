@@ -53,5 +53,40 @@ namespace BaseDatos
                 datos.CloseConexion();
             }
         }
+        public void editar(Marca marca, string nombre)
+        {
+            AccesoBaseDatos accesoBaseDatos = new AccesoBaseDatos();
+            try
+            {
+                accesoBaseDatos.SetConsulta("Update MARCAS Set Descripcion = '" + nombre + "' where Id = " + marca.Id.ToString());
+                accesoBaseDatos.Lectura();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }finally
+            {
+                accesoBaseDatos.CloseConexion();
+            }
+        }
+        public void eliminar(int id)
+        {
+            AccesoBaseDatos accesoBaseDatos = new AccesoBaseDatos();
+            try
+            {
+                accesoBaseDatos.SetConsulta("Delete Marcas where Id = " + id);
+                accesoBaseDatos.Lectura();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+
+            }finally
+            {
+                accesoBaseDatos.CloseConexion();
+            }
+        }
     }
 }

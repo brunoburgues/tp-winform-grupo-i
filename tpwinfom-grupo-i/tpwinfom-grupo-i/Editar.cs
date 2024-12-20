@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -62,6 +63,64 @@ namespace tpwinfom_grupo_i
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnConfirmar_Click(object sender, EventArgs e)
+        {
+            if (lbObjeto.Text == "Marca")
+            {
+                Marca marca = (Marca)dgv.CurrentRow.DataBoundItem;
+                DialogResult result = MessageBox.Show("Estas seguro de modificar la marca " + marca.Nombre, "Confirmar", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    MarcaDB marcaDB = new MarcaDB();
+                    marcaDB.editar(marca, tbNombre.Text);
+                    dgv.DataSource = marcaDB.listarMarcas();
+                }
+            }else
+            {
+                Categoria categoria = (Categoria)dgv.CurrentRow.DataBoundItem;
+                DialogResult result = MessageBox.Show("Estas seguro de modificar la categoria " + categoria.Nombre, "Confirmar", MessageBoxButtons.YesNo);
+                if(result == DialogResult.Yes)
+                {
+                    CategoriaDB categoriaDB = new CategoriaDB();
+                    categoriaDB.editar(categoria, tbNombre.Text);
+                    dgv.DataSource = categoriaDB.listarCategoria();
+                }
+            }
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (lbObjeto.Text == "Marca")
+                {
+                    Marca marca = (Marca)dgv.CurrentRow.DataBoundItem;
+                    DialogResult result = MessageBox.Show("Seguro que quieres eliminar la marca " + marca.Nombre + "¿Esta es una accion irreversible?", "Confirmar", MessageBoxButtons.YesNo);
+                    if (result == DialogResult.Yes)
+                    {
+                        MarcaDB marcaDB = new MarcaDB();
+                        marcaDB.eliminar(marca.Id);
+                        dgv.DataSource = marcaDB.listarMarcas();
+                    }
+                }
+                else
+                {
+                    Categoria categoria = (Categoria)dgv.CurrentRow.DataBoundItem;
+                    DialogResult result = MessageBox.Show("Seguro que quieres eliminar la categoria " + categoria.Nombre + " ¿Esta es una accion irreversible?", "Confirmar", MessageBoxButtons.YesNo);
+                    if (result == DialogResult.Yes)
+                    {
+                        CategoriaDB categoriaDB = new CategoriaDB();
+                        categoriaDB.eliminar(categoria.Id);
+                        dgv.DataSource = categoriaDB.listarCategoria();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+               throw ex;
+            }
         }
     }
 }

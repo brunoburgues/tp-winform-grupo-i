@@ -117,6 +117,7 @@ namespace tpwinfom_grupo_i
                 listaCategoría.SelectedItem = listaCategoría.Items[selectedIndex];
             }
         }
+
         private void eliminar_Click(object sender, EventArgs e)
         {
             ArticuloDB nuevo = new ArticuloDB();

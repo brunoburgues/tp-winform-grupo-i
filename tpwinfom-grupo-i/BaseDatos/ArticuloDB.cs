@@ -16,7 +16,7 @@ namespace BaseDatos
             AccesoBaseDatos db = new AccesoBaseDatos();
             try
             {
-                db.SetConsulta("Select A.Id, A.Codigo, Nombre, A.Descripcion, IdMarca, M.Descripcion Marca, IdCategoria, C.Descripcion Categoria, Precio from ARTICULOS A inner join MARCAS M on A.IdMarca = M.Id inner join CATEGORIAS C on A.IdCategoria = C.Id ");
+                db.SetConsulta("Select A.Id, A.Codigo, Nombre, A.Descripcion, IdMarca, M.Descripcion Marca, IdCategoria, C.Descripcion Categoria, Precio from ARTICULOS A left join MARCAS M on A.IdMarca = M.Id left join CATEGORIAS C on A.IdCategoria = C.Id ");
                 db.Lectura();
                 while (db.Reader.Read())
                 {
@@ -27,10 +27,23 @@ namespace BaseDatos
                     auxA.Descripcion = (string)db.Reader["Descripcion"];
                     auxA.Marca = new Marca();
                     auxA.Marca.Id = (int)db.Reader["IdMarca"];
-                    auxA.Marca.Nombre = (string)db.Reader["Marca"];
+                    if (db.Reader["Marca"] != DBNull.Value) 
+                    { 
+                        auxA.Marca.Nombre = (string)db.Reader["Marca"];
+                    }else
+                    {
+                        auxA.Marca.Nombre = "Sin asignar";
+                    }
                     auxA.Categoria = new Categoria();
                     auxA.Categoria.Id = (int)db.Reader["IdCategoria"];
-                    auxA.Categoria.Nombre = (string)db.Reader["Categoria"];
+                    if (db.Reader["Categoria"] != DBNull.Value)
+                    {
+                        auxA.Categoria.Nombre = (string)db.Reader["Categoria"];
+                    }
+                    else
+                    {
+                        auxA.Categoria.Nombre = "Sin asignar";
+                    }
                     auxA.Precio = (decimal)db.Reader["Precio"];
                     ImagenDB listaImagen = new ImagenDB();
                     List<Imagen> listaImagenes = listaImagen.ListarImagenes(auxA.Id);

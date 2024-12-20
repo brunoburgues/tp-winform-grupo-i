@@ -20,19 +20,13 @@ namespace tpwinfom_grupo_i
             InitializeComponent();
         }
 
-        List<Articulo> list = new List<Articulo>();
+        List<Articulo> listA = new List<Articulo>();
+        List<Marca> listM = new List<Marca>();
+        List<Categoria> listC = new List<Categoria>();
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            ArticuloDB articuloDB = new ArticuloDB();
-            list = articuloDB.ListarArticulos();
-            dgwArticulos.DataSource = list;
-            dgwArticulos.Columns["Id"].Visible = false;
-            dgwArticulos.Columns["Codigo"].Visible = false;
-            dgwArticulos.Columns["Descripcion"].Visible = false;
-
-            cbSeleccionarFiltro.Items.Add("Categoria");
-            cbSeleccionarFiltro.Items.Add("Marca");
+            cargarArticulos();
         }
 
         private void agregarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -44,7 +38,7 @@ namespace tpwinfom_grupo_i
         private void btnBusqueda_Click(object sender, EventArgs e)
         {
             string busqueda = tbBusqueda.Text;
-            List<Articulo> listaFiltrada = list.FindAll(a => a.Nombre.IndexOf(busqueda, StringComparison.OrdinalIgnoreCase) >= 0);
+            List<Articulo> listaFiltrada = listA.FindAll(a => a.Nombre.IndexOf(busqueda, StringComparison.OrdinalIgnoreCase) >= 0);
             if (cbSeleccionarFiltro.SelectedIndex == 0)
             {
                 Categoria categoria = (Categoria)cbFiltro.SelectedItem;
@@ -86,7 +80,7 @@ namespace tpwinfom_grupo_i
                 cbFiltro.DataSource = null;
             }
             tbBusqueda.Text = "";
-            dgwArticulos.DataSource = list;
+            dgwArticulos.DataSource = listA;
         }
 
         private void agregarToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -111,6 +105,59 @@ namespace tpwinfom_grupo_i
         {
             Editar editar1 = new Editar(1); 
             editar1.ShowDialog();
+        }
+
+        private void cargarArticulos()
+        {
+            ArticuloDB articuloDB = new ArticuloDB();
+            listA = articuloDB.ListarArticulos();
+            dgwArticulos.DataSource = listA;
+            dgwArticulos.Columns["Id"].Visible = false;
+            dgwArticulos.Columns["Codigo"].Visible = false;
+            dgwArticulos.Columns["Descripcion"].Visible = false;
+            cbSeleccionarFiltro.Enabled=true;
+            cbFiltro.Enabled=true;
+            btnEliminarFiltros.Enabled=true;
+            cbSeleccionarFiltro.Items.Clear();
+            cbSeleccionarFiltro.Items.Add("Categoria");
+            cbSeleccionarFiltro.Items.Add("Marca");
+        }
+
+        private void cargarMarcas()
+        {
+            MarcaDB marcaDB = new MarcaDB();
+            listM = marcaDB.listarMarcas();
+            dgwArticulos.DataSource= listM;
+            dgwArticulos.Columns["Id"].Visible=false;
+            cbSeleccionarFiltro.Enabled=false;
+            cbFiltro.Enabled=false;
+            btnEliminarFiltros.Enabled=false;
+        }
+
+        private void cargarCategorias()
+        {
+            CategoriaDB categoriaDB = new CategoriaDB();
+            listC = categoriaDB.listarCategoria();
+            dgwArticulos.DataSource= listC;
+            dgwArticulos.Columns["Id"].Visible=false;
+            cbSeleccionarFiltro.Enabled=false;
+            cbFiltro.Enabled=false;
+            btnEliminarFiltros.Enabled=false;
+        }
+
+        private void btnVerMarcas_Click(object sender, EventArgs e)
+        {
+            cargarMarcas();
+        }
+
+        private void btnVerArticulos_Click(object sender, EventArgs e)
+        {
+            cargarArticulos();
+        }
+
+        private void btnVerCategorias_Click(object sender, EventArgs e)
+        {
+            cargarCategorias();
         }
     }
 }

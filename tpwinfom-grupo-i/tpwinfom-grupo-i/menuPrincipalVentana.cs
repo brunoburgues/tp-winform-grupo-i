@@ -23,6 +23,7 @@ namespace tpwinfom_grupo_i
         List<Articulo> listA = new List<Articulo>();
         List<Marca> listM = new List<Marca>();
         List<Categoria> listC = new List<Categoria>();
+        int posicion;
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -38,18 +39,36 @@ namespace tpwinfom_grupo_i
         private void btnBusqueda_Click(object sender, EventArgs e)
         {
             string busqueda = tbBusqueda.Text;
-            List<Articulo> listaFiltrada = listA.FindAll(a => a.Nombre.IndexOf(busqueda, StringComparison.OrdinalIgnoreCase) >= 0);
-            if (cbSeleccionarFiltro.SelectedIndex == 0)
+            switch (posicion)
             {
-                Categoria categoria = (Categoria)cbFiltro.SelectedItem;
-                listaFiltrada = listaFiltrada.FindAll(A => A.Categoria.Id == categoria.Id);
+                case 0: 
+                    List<Articulo> listaFiltrada = listA.FindAll(a => a.Nombre.IndexOf(busqueda, StringComparison.OrdinalIgnoreCase) >= 0);
+                    if (cbSeleccionarFiltro.SelectedIndex == 0)
+                    {
+                        Categoria categoria = (Categoria)cbFiltro.SelectedItem;
+                        listaFiltrada = listaFiltrada.FindAll(A => A.Categoria.Id == categoria.Id);
+                    }
+                    if (cbSeleccionarFiltro.SelectedIndex == 1)
+                    {
+                        Marca marca = (Marca)cbFiltro.SelectedItem;
+                        listaFiltrada = listaFiltrada.FindAll(A => A.Marca.Id == marca.Id);
+                    }
+                    dgwArticulos.DataSource = listaFiltrada;
+                    break;
+
+                case 1: 
+                    List<Marca> listaFiltradaM = listM.FindAll(a => a.Nombre.IndexOf(busqueda, StringComparison.OrdinalIgnoreCase) >= 0);
+                    dgwArticulos.DataSource = listaFiltradaM;
+                    break;
+
+                case 2:
+                    List<Categoria> listaFiltradaC = listC.FindAll(a => a.Nombre.IndexOf(busqueda, StringComparison.OrdinalIgnoreCase) >= 0);
+                    dgwArticulos.DataSource = listaFiltradaC;
+                    break;
+
+                default:
+                    break;
             }
-            if (cbSeleccionarFiltro.SelectedIndex == 1)
-            {
-                Marca marca = (Marca)cbFiltro.SelectedItem;
-                listaFiltrada = listaFiltrada.FindAll(A => A.Marca.Id == marca.Id);
-            }
-            dgwArticulos.DataSource = listaFiltrada;
         }
 
         private void dgwArticulos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -121,6 +140,7 @@ namespace tpwinfom_grupo_i
             cbSeleccionarFiltro.Items.Clear();
             cbSeleccionarFiltro.Items.Add("Categoria");
             cbSeleccionarFiltro.Items.Add("Marca");
+            posicion = 0;
         }
 
         private void cargarMarcas()
@@ -132,6 +152,7 @@ namespace tpwinfom_grupo_i
             cbSeleccionarFiltro.Enabled=false;
             cbFiltro.Enabled=false;
             btnEliminarFiltros.Enabled=false;
+            posicion=1;
         }
 
         private void cargarCategorias()
@@ -143,6 +164,7 @@ namespace tpwinfom_grupo_i
             cbSeleccionarFiltro.Enabled=false;
             cbFiltro.Enabled=false;
             btnEliminarFiltros.Enabled=false;
+            posicion=2;
         }
 
         private void btnVerMarcas_Click(object sender, EventArgs e)

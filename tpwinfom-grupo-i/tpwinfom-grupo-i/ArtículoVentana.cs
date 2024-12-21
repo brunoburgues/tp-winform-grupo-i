@@ -194,18 +194,20 @@ namespace tpwinfom_grupo_i
         }
         private void eliminar_Click(object sender, EventArgs e)
         {
-            ArticuloDB nuevo = new ArticuloDB();
-            Articulo seleccionado;
+            ArticuloDB articuloDB = new ArticuloDB();
             try
             {
-               /* seleccionado = (Articulo)dgwArticulos.CurrentRow.DataBound;
-                nuevo.eliminar(seleccionado.id);*/
-                
+                DialogResult result = MessageBox.Show("¿Seguro que quieres eliminar este articulo?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.Yes)
+                {
+                    articuloDB.eliminar(articulo.Id);
+                    MessageBox.Show("Se ha eliminado el articulo");
+                }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                
-                throw;
+                throw ex;
             }
         }
         private void establecerArticulo()

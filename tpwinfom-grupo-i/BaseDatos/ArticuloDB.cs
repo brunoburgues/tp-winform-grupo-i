@@ -87,18 +87,19 @@ namespace BaseDatos
 
         public void eliminar(int id)
         {
+            AccesoBaseDatos datos = new AccesoBaseDatos();
             try
             {
-                AccesoBaseDatos datos = new AccesoBaseDatos();
                 datos.SetConsulta("delete from ARTICULOS where id = @id");
                 datos.setearparametros("@id", id);
                 datos.ejecutarAccion();
-
             }
             catch (Exception ex)
             {
-
                 throw ex;
+            }finally
+            {
+                datos.CloseConexion();
             }
         }
         public Articulo TraerUltimoArticulo()

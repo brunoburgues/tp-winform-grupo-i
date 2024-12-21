@@ -150,23 +150,15 @@ namespace tpwinfom_grupo_i
         }
         private void galeria_Click(object sender, EventArgs e)
         {
-            Galeria ventanaGaleria;
-            if (articulo != null)
+            VisualizarImagenes visualizarImagenes;
+            if (articulo == null)
             {
-                ventanaGaleria = new Galeria(articulo);
-            }
-            else
+                visualizarImagenes = new VisualizarImagenes();
+            }else
             {
-                ventanaGaleria = new Galeria();
+                visualizarImagenes = new VisualizarImagenes(articulo);
             }
-
-            ventanaGaleria.ShowDialog();
-            if (ventanaGaleria.Seleccionadas)
-            {
-                listaImagenes = ventanaGaleria.Imagenes;
-                pictureBoxImagenes.Load(listaImagenes[0]);
-                return;
-            }
+            visualizarImagenes.ShowDialog();
         }
         private void eliminar_Click(object sender, EventArgs e)
         {

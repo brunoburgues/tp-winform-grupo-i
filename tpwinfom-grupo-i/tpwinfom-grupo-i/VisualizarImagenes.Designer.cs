@@ -109,7 +109,7 @@
             this.Controls.Add(this.pbImagen);
             this.Controls.Add(this.dgvImagenes);
             this.Name = "VisualizarImagenes";
-            this.Text = "VisualizarImagenes";
+            this.Text = "Galeria";
             this.Load += new System.EventHandler(this.VisualizarImagenes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvImagenes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).EndInit();

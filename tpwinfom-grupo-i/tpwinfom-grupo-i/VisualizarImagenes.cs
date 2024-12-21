@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Security.Policy;
 using System.Text;
@@ -18,8 +19,10 @@ namespace tpwinfom_grupo_i
         Articulo articulo = null;
         List<Imagen> list = new List<Imagen>();
         ImagenDB imagenDB = new ImagenDB();
+        bool articuloNuevo = false;
         public VisualizarImagenes()
         {
+            articuloNuevo=true;
             InitializeComponent();
         }
 
@@ -57,8 +60,11 @@ namespace tpwinfom_grupo_i
             if (list != null)
             {
                 Imagen imagen = new Imagen();
-                imagen = dgvImagenes.CurrentRow.DataBoundItem as Imagen;
-                CargarImagen(imagen.Url);
+                if (dgvImagenes.CurrentRow != null)
+                {
+                    imagen = dgvImagenes.CurrentRow.DataBoundItem as Imagen;
+                    CargarImagen(imagen.Url);
+                }
             }
         }
 
@@ -82,6 +88,11 @@ namespace tpwinfom_grupo_i
             {
                  list = imagenDB.ListarImagenes(articulo.Id);
                  dgvImagenes.DataSource = list;
+            }else
+            {
+                dgvImagenes.DataSource = null;
+                dgvImagenes.DataSource = list;
+                dgvImagenes.Columns["Id"].Visible = false;
             }
         }
 
@@ -90,11 +101,25 @@ namespace tpwinfom_grupo_i
             if (tbUrl.Text.Length == 0)
             {
                 MessageBox.Show("Debes agregar una url");
-            }else
+            }
+            else
             {
-                string url = tbUrl.Text;
-                imagenDB.AgregarImagen(articulo.Id, url);
-                listaImagenes();
+                if (articuloNuevo)
+                {
+                    Imagen nueva = new Imagen();
+                    nueva.Id = 999;
+                    nueva.Url = tbUrl.Text;
+                    list.Add(nueva);
+                    listaImagenes();
+                    tbUrl.Text = "";
+                }
+                else
+                {
+                    string url = tbUrl.Text;
+                    imagenDB.AgregarImagen(articulo.Id, url);
+                    listaImagenes();
+                    tbUrl.Text = "";
+                }
             }
         }
     }

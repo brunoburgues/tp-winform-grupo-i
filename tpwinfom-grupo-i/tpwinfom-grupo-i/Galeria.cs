@@ -16,12 +16,22 @@ namespace tpwinfom_grupo_i
         public Galeria()
         {
             InitializeComponent();
+            ModificarImagenes = false;
+        }
+        public Galeria( int idArticulo)
+        {
+            InitializeComponent();
+            this.idArticulo = idArticulo;
+            ModificarImagenes = true;
         }
         public List<string> Imagenes { get; set;}
+        public List<Imagen> ImagenesConId { get; set; }
         public bool Seleccionadas {  get; set;}
-
-        List<string> imagenes = new List<string>();
+        public bool ModificarImagenes { get; set;}
+        private List<string> imagenes = new List<string>();
+        private List<Imagen> listaModificarImg;
         private int indiceListaRutas = 0;
+        private int idArticulo;
         //Métodos
         private void cargarImagen(string url)
         {
@@ -42,7 +52,22 @@ namespace tpwinfom_grupo_i
                 openFileDialog.Multiselect = true;
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    imagenes.AddRange(openFileDialog.FileNames);
+                    if (ModificarImagenes)
+                    {
+                        ImagenDB imagenDB = new ImagenDB();
+                        imagenes.AddRange(openFileDialog.FileNames);
+                        foreach (string imagen in imagenes)
+                        {
+                            imagenDB.AgregarImagen(idArticulo, imagen);
+                        }
+
+                        listaModificarImg = imagenDB.ListarImagenes(idArticulo);
+                    }
+                    else
+                    {
+                        imagenes.AddRange(openFileDialog.FileNames);
+
+                    }
                     return true;
                 }
                 return false;
@@ -68,7 +93,16 @@ namespace tpwinfom_grupo_i
             if (listarRutasLocales())
             {
                 indiceListaRutas = imagenes.Count - 1;
-                cargarImagen(imagenes[indiceListaRutas]);
+                if (ModificarImagenes)
+                {
+                    cargarImagen(listaModificarImg[indiceListaRutas].Url);
+
+                }
+                else
+                {
+                    cargarImagen(imagenes[indiceListaRutas]);
+
+                }
                 if (imagenes.Count > 1)
                 {
                     btnAnterior.Enabled = imagenes.Count > 1;
@@ -118,10 +152,19 @@ namespace tpwinfom_grupo_i
 
         private void Galeria_Load(object sender, EventArgs e)
         {
-            btnAnterior.Enabled = false;
-            btnSiguiente.Enabled = false;
-            btnEliminar.Enabled = false;
-            cargarImagen("https://www.pngkey.com/png/full/233-2332677_ega-png.png");
+            if (ModificarImagenes)
+            {
+                ImagenDB imagenDB = new ImagenDB();
+                listaModificarImg = imagenDB.ListarImagenes(idArticulo);
+                cargarImagen(listaModificarImg[indiceListaRutas].Url);
+            }
+            else
+            {
+                btnAnterior.Enabled = false;
+                btnSiguiente.Enabled = false;
+                btnEliminar.Enabled = false;
+                cargarImagen("");
+            }
         }
 
         private void btnAgregarUrl_Click(object sender, EventArgs e)
@@ -131,7 +174,16 @@ namespace tpwinfom_grupo_i
             {
                 if (imagenes.Count > 0)
                 {
-                    imagenes.Add(nuevoUrl);
+                    if (ModificarImagenes)
+                    {
+                        ImagenDB imagenDB = new ImagenDB();
+                        imagenDB.AgregarImagen(idArticulo, nuevoUrl);
+                        listaModificarImg = imagenDB.ListarImagenes(idArticulo); 
+                    }
+                    else
+                    {
+                        imagenes.Add(nuevoUrl);
+                    }
                     indiceListaRutas = imagenes.Count - 1;
                     cargarImagen(imagenes[indiceListaRutas]);
                     txtUrl.Clear();
@@ -140,7 +192,16 @@ namespace tpwinfom_grupo_i
                 }
                 else if (imagenes.Count == 0)
                 {
-                    imagenes.Add(nuevoUrl);
+                    if (ModificarImagenes)
+                    {
+                        ImagenDB imagenDB = new ImagenDB();
+                        imagenDB.AgregarImagen(idArticulo, nuevoUrl);
+                        listaModificarImg = imagenDB.ListarImagenes(idArticulo);
+                    }
+                    else
+                    {
+                        imagenes.Add(nuevoUrl);
+                    }
                     cargarImagen(imagenes[indiceListaRutas]);
                     txtUrl.Clear();
                     btnAnterior.Enabled = false;
@@ -156,24 +217,53 @@ namespace tpwinfom_grupo_i
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            if (imagenes.Count > 0)
+            try
             {
-                Seleccionadas = true;
-                Imagenes = imagenes;
-                Close();
+                if (!ModificarImagenes)
+                {
+                    if (imagenes.Count > 0)
+                    {
+                        Seleccionadas = true;
+                        Imagenes = imagenes;
+                    }
+                    else
+                    {
+                        Seleccionadas = false;
+                        MessageBox.Show("No se ha seleccionado ninguna imagen.", "Imágenes Seleccionadas...", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+                }
             }
-            else
+            catch (Exception)
             {
-                Seleccionadas = false;
-                MessageBox.Show("No se ha seleccionado ninguna imagen.", "Imágenes Seleccionadas...", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                throw;
             }
+            finally { Close(); }
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             if (imagenes.Count > 0)
             {
-                imagenes.RemoveAt(indiceListaRutas);
+                if (ModificarImagenes)
+                {
+                    DialogResult resultado = MessageBox.Show("¿Deseas eliminar la imagen? IMPORTANTE: Se eliminará de forma permanente.", "Confirmación Eliminar...", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                    if (resultado == DialogResult.OK)
+                    {
+                        ImagenDB imagenDB = new ImagenDB();
+                        imagenDB.EliminarImagen(listaModificarImg[indiceListaRutas].Id);
+                        MessageBox.Show("Imagen eliminada de la BD", "Imagen Eliminada...");
+                        listaModificarImg = imagenDB.ListarImagenes(idArticulo);
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
+                else
+                {
+                    imagenes.RemoveAt(indiceListaRutas);
+                }
                 
                 if (imagenes.Count == 0)
                 {

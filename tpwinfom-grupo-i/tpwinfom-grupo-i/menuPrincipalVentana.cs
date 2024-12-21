@@ -182,5 +182,20 @@ namespace tpwinfom_grupo_i
         {
             cargarCategorias();
         }
+
+        private void modificarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Articulo seleccionado = (Articulo)dgwArticulos.CurrentRow.DataBoundItem;
+                ArtículoVentana modificar = new ArtículoVentana(seleccionado);
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Seleccione el Artículo a modificar en la tabla.", "Artículo No Seleccionado...", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
+        }
     }
 }

@@ -136,6 +136,28 @@ namespace BaseDatos
                 datos.CloseConexion();
             }
         }
+        public void modificar(Articulo articulo)
+        {
+            AccesoBaseDatos datos = new AccesoBaseDatos();
+            try
+            {
+                datos.SetConsulta("update ARTICULOS set Codigo = @codigo, Nombre = @nombre, Descripcion = @descripcion, IdMarca = @idMarca, IdCategoria = @idCategoria, ImagenUrl = @UrlImagen, Precio = @precio where Id = @id");
+                datos.setParametro("@codigo", articulo.Codigo);
+                datos.setParametro("@nombre", articulo.Nombre);
+                datos.setParametro("@descripcion", articulo.Descripcion);
+                datos.setParametro("@idMarca", articulo.Marca.Id);
+                datos.setParametro("@idCategoria", articulo.Categoria.Id);
+                datos.setParametro("@precio", articulo.Precio);
+                datos.setParametro("@id", articulo.Id);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally { datos.CloseConexion(); }
+        }
 
     }
 

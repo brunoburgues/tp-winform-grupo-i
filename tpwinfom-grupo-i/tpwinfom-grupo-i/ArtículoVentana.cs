@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,67 +17,124 @@ namespace tpwinfom_grupo_i
 {
     public partial class ArtículoVentana : Form
     {
+        //Variables Globales
+        Articulo articulo = null;
+        List<string> listaImagenes;
+
         public ArtículoVentana()
         {
             InitializeComponent();
         }
-        Articulo nuevoArticulo;
-
-        //
-        List<string> listaImagenes;
+        public ArtículoVentana(Articulo modificarArt)
+        {
+            InitializeComponent();
+            this.Text = "Modificar Artículo";
+            agregar.Text = "Modificar";
+            articulo = modificarArt;
+        }
+        
         //Métodos
-
+        private bool modificarArticulo()
+        {
+            if (articulo == null)
+            {
+                return false;
+            }
+            return true;
+        }
+        private void cargarImagen(string url)
+        {
+            try
+            {
+                pictureBoxImagenes.Load(url);
+            }
+            catch (Exception ex)
+            {
+                pictureBoxImagenes.Load("https://www.pngkey.com/png/full/233-2332677_ega-png.png");
+            }
+        }
         //Eventos
         private void ArtículoVentana_Load(object sender, EventArgs e)
         {
-            pictureBoxImagenes.Load("https://www.pngkey.com/png/full/233-2332677_ega-png.png");
-            CategoriaDB categoriaDB = new CategoriaDB();
-            listaCategoría.DataSource = categoriaDB.listarCategoria();
-            listaCategoría.DisplayMember = "Nombre";
-            listaCategoría.ValueMember = "Id";
-            MarcaDB marcaDB = new MarcaDB();
-            listaMarca.DataSource = marcaDB.listarMarcas();
-            listaMarca.DisplayMember = "Nombre";
-            listaMarca.ValueMember = "Id";
+            if (articulo == null)
+            {
+                pictureBoxImagenes.Load("");
+                CategoriaDB categoriaDB = new CategoriaDB();
+                listaCategoría.DataSource = categoriaDB.listarCategoria();
+                listaCategoría.DisplayMember = "Nombre";
+                listaCategoría.ValueMember = "Id";
+                MarcaDB marcaDB = new MarcaDB();
+                listaMarca.DataSource = marcaDB.listarMarcas();
+                listaMarca.DisplayMember = "Nombre";
+                listaMarca.ValueMember = "Id";
 
 
-            listaCategoría.SelectedIndex = -1;
-            listaMarca.SelectedIndex = -1;
+                listaCategoría.SelectedIndex = -1;
+                listaMarca.SelectedIndex = -1;
+            }
+            else
+            {
+                cajaCódigo.Text = articulo.Codigo;
+                cajaNombre.Text = articulo.Nombre;
+                cajaPrecio.Text = $"{articulo.Precio}";
+                cajaDescripcion.Text = articulo.Descripcion;
+                listaCategoría.SelectedItem = articulo.Categoria.Id;
+                listaMarca.SelectedItem = articulo.Marca.Id;
+                ImagenDB imagenesDB = new ImagenDB();
+                List<Imagen> imagenes = imagenesDB.ListarImagenes(articulo.Id);
+                listaImagenes = new List<string>();
+                int contador = 0;
 
-            
+                foreach (Imagen imagen in imagenes)
+                {
+                    listaImagenes.Add(imagenes[contador].Url);
+                    contador++;
+                }
+                //Muestra la primera imágen como previsualizacion.
+                cargarImagen(listaImagenes[0]);
+            }           
         }
 
         private void agregar_Click(object sender, EventArgs e)
-        {   
-            Articulo nuevo = new Articulo();
-            ArticuloDB nuevoDB = new ArticuloDB();
+        {
+            ArticuloDB articuloDB = new ArticuloDB();
             ImagenDB imagenesDB = new ImagenDB();
+            
             try
             {
-                nuevo.Codigo = cajaCódigo.Text;
-                nuevo.Nombre = cajaNombre.Text;
-                nuevo.Precio = decimal.Parse(cajaPrecio.Text);
-                nuevo.Marca = (Marca)listaMarca.SelectedItem;
-                nuevo.Categoria = (Categoria)listaCategoría.SelectedItem;
-                nuevo.Descripcion = cajaDescripcion.Text;
+                articulo.Codigo = cajaCódigo.Text;
+                articulo.Nombre = cajaNombre.Text;
+                articulo.Precio = decimal.Parse(cajaPrecio.Text);
+                articulo.Marca = (Marca)listaMarca.SelectedItem;
+                articulo.Categoria = (Categoria)listaCategoría.SelectedItem;
+                articulo.Descripcion = cajaDescripcion.Text;
 
-                nuevoDB.agregar(nuevo);
-
-                nuevo = nuevoDB.TraerUltimoArticulo();
-                //Guarda una imagen por vez
-                foreach (string imagen in listaImagenes)
+                if (modificarArticulo())
                 {
-                    imagenesDB.AgregarImagen(nuevo.Id, imagen);
+                    articuloDB.modificar(articulo);
+                    //Las imágenes se Eliminan y Agregan en la BD en la Ventana Galeria
+                    MessageBox.Show("Modificación Exitosa.");
                 }
-                
-                MessageBox.Show("Agregado exitoso");
-                Close();
+                else
+                {
+                    articuloDB.agregar(articulo);
+
+                    articulo = articuloDB.TraerUltimoArticulo();
+                    //Guarda una imagen por vez
+                    foreach (string imagen in listaImagenes)
+                    {
+                        imagenesDB.AgregarImagen(articulo.Id, imagen);
+                    }
+
+                    MessageBox.Show("Agregado exitoso");
+                }
             }
             catch (Exception ex)
             {
 
                 MessageBox.Show(ex.ToString());
             }
+            finally { Close(); }
         }
 
         private void cancelar_Click(object sender, EventArgs e)
@@ -87,7 +145,16 @@ namespace tpwinfom_grupo_i
 
         private void galeria_Click(object sender, EventArgs e)
         {
-            Galeria ventanaGaleria = new Galeria();
+            Galeria ventanaGaleria;
+            if (modificarArticulo())
+            {
+                ventanaGaleria = new Galeria(articulo.Id);
+            }
+            else
+            {
+                ventanaGaleria = new Galeria();
+            }
+
             ventanaGaleria.ShowDialog();
 
             if (ventanaGaleria.Seleccionadas)
@@ -95,26 +162,26 @@ namespace tpwinfom_grupo_i
                 listaImagenes = ventanaGaleria.Imagenes;
                 pictureBoxImagenes.Load(listaImagenes[0]);
             }
-            
+
         }
 
         private void listaMarca_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int selectedIndex = listaMarca.SelectedIndex;
+            Marca selectedItem = (Marca)listaMarca.SelectedItem;
 
-            if (selectedIndex != -1)
+            if (selectedItem != null)
             {
-                listaMarca.SelectedItem = listaMarca.Items[selectedIndex];
+                listaMarca.SelectedItem = listaMarca.Items[selectedItem.Id];
             }
         }
 
         private void listaCategoría_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int selectedIndex = listaCategoría.SelectedIndex;
+            Categoria selectedItem = (Categoria)listaCategoría.SelectedItem;
 
-            if (selectedIndex != -1)
+            if (selectedItem != null)
             {
-                listaCategoría.SelectedItem = listaCategoría.Items[selectedIndex];
+                listaCategoría.SelectedItem = listaCategoría.Items[selectedItem.Id];
             }
         }
 

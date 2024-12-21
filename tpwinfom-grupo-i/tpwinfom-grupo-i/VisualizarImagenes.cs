@@ -133,5 +133,10 @@ namespace tpwinfom_grupo_i
                 }
             }
         }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

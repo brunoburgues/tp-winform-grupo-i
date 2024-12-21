@@ -224,7 +224,7 @@ namespace tpwinfom_grupo_i
                     btnAnterior.Enabled= true;
                     btnSiguiente.Enabled = false;
                 }
-                /*else if (contadorElementos(listaModificarImg, imagenes) == 0)
+                else if (contadorElementos(listaModificarImg, imagenes) == 0)
                 {
                     if (ModificarImagenes)
                     {
@@ -241,7 +241,7 @@ namespace tpwinfom_grupo_i
                     btnAnterior.Enabled = false;
                     btnSiguiente.Enabled = contadorElementos(listaModificarImg, imagenes) > 1;
                     btnEliminar.Enabled = contadorElementos(listaModificarImg, imagenes) >= 1;
-                }*/
+                }
             }
             else
             {

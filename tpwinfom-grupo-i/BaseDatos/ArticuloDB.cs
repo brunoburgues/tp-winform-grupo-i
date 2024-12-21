@@ -141,7 +141,7 @@ namespace BaseDatos
             AccesoBaseDatos datos = new AccesoBaseDatos();
             try
             {
-                datos.SetConsulta("update ARTICULOS set Codigo = @codigo, Nombre = @nombre, Descripcion = @descripcion, IdMarca = @idMarca, IdCategoria = @idCategoria, ImagenUrl = @UrlImagen, Precio = @precio where Id = @id");
+                datos.SetConsulta("update ARTICULOS set Codigo = @codigo, Nombre = @nombre, Descripcion = @descripcion, IdMarca = @idMarca, IdCategoria = @idCategoria, Precio = @precio where Id = @id");
                 datos.setParametro("@codigo", articulo.Codigo);
                 datos.setParametro("@nombre", articulo.Nombre);
                 datos.setParametro("@descripcion", articulo.Descripcion);

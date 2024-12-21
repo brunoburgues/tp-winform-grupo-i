@@ -20,6 +20,7 @@ namespace tpwinfom_grupo_i
         //Variables Globales
         Articulo articulo = null;
         List<string> listaImagenes;
+        List<Imagen> imagenesExtraidasDB;
 
         public ArtículoVentana()
         {
@@ -34,6 +35,22 @@ namespace tpwinfom_grupo_i
         }
         
         //Métodos
+        private void listarImagenes()
+        {
+            ImagenDB imagenesDB = new ImagenDB();
+            imagenesExtraidasDB = imagenesDB.ListarImagenes(articulo.Id);
+        }
+        private List<string> extraerUrl()
+        {
+            int contador = 0;
+
+            foreach (Imagen imagen in imagenesExtraidasDB)
+            {
+                listaImagenes.Add(imagenesExtraidasDB[contador].Url);
+                contador++;
+            }
+            return listaImagenes;
+        }
         private bool modificarArticulo()
         {
             if (articulo == null)
@@ -56,19 +73,18 @@ namespace tpwinfom_grupo_i
         //Eventos
         private void ArtículoVentana_Load(object sender, EventArgs e)
         {
+            CategoriaDB categoriaDB = new CategoriaDB();
+            listaCategoría.DataSource = categoriaDB.listarCategoria();
+            listaCategoría.DisplayMember = "Nombre";
+            listaCategoría.ValueMember = "Id";
+            MarcaDB marcaDB = new MarcaDB();
+            listaMarca.DataSource = marcaDB.listarMarcas();
+            listaMarca.DisplayMember = "Nombre";
+            listaMarca.ValueMember = "Id";
             if (articulo == null)
             {
                 pictureBoxImagenes.Load("");
-                CategoriaDB categoriaDB = new CategoriaDB();
-                listaCategoría.DataSource = categoriaDB.listarCategoria();
-                listaCategoría.DisplayMember = "Nombre";
-                listaCategoría.ValueMember = "Id";
-                MarcaDB marcaDB = new MarcaDB();
-                listaMarca.DataSource = marcaDB.listarMarcas();
-                listaMarca.DisplayMember = "Nombre";
-                listaMarca.ValueMember = "Id";
-
-
+                
                 listaCategoría.SelectedIndex = -1;
                 listaMarca.SelectedIndex = -1;
             }
@@ -80,16 +96,9 @@ namespace tpwinfom_grupo_i
                 cajaDescripcion.Text = articulo.Descripcion;
                 listaCategoría.SelectedItem = articulo.Categoria.Id;
                 listaMarca.SelectedItem = articulo.Marca.Id;
-                ImagenDB imagenesDB = new ImagenDB();
-                List<Imagen> imagenes = imagenesDB.ListarImagenes(articulo.Id);
+                listarImagenes();
                 listaImagenes = new List<string>();
-                int contador = 0;
-
-                foreach (Imagen imagen in imagenes)
-                {
-                    listaImagenes.Add(imagenes[contador].Url);
-                    contador++;
-                }
+                extraerUrl();
                 //Muestra la primera imágen como previsualizacion.
                 cargarImagen(listaImagenes[0]);
             }           
@@ -157,31 +166,43 @@ namespace tpwinfom_grupo_i
 
             ventanaGaleria.ShowDialog();
 
-            if (ventanaGaleria.Seleccionadas)
+            if (!modificarArticulo())
             {
-                listaImagenes = ventanaGaleria.Imagenes;
-                pictureBoxImagenes.Load(listaImagenes[0]);
+                if (ventanaGaleria.Seleccionadas)
+                {
+                    listaImagenes = ventanaGaleria.Imagenes;
+                    pictureBoxImagenes.Load(listaImagenes[0]);
+                    return;
+                }
             }
-
+            listarImagenes();
+            extraerUrl();
+            pictureBoxImagenes.Load(listaImagenes[0]);
         }
 
         private void listaMarca_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Marca selectedItem = (Marca)listaMarca.SelectedItem;
-
-            if (selectedItem != null)
+            if (!modificarArticulo())
             {
-                listaMarca.SelectedItem = listaMarca.Items[selectedItem.Id];
+                Marca selectedItem = (Marca)listaMarca.SelectedItem;
+
+                if (selectedItem != null)
+                {
+                    listaMarca.SelectedItem = listaMarca.Items[selectedItem.Id];
+                }
             }
         }
 
         private void listaCategoría_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Categoria selectedItem = (Categoria)listaCategoría.SelectedItem;
-
-            if (selectedItem != null)
+            if (!modificarArticulo())
             {
-                listaCategoría.SelectedItem = listaCategoría.Items[selectedItem.Id];
+                Categoria selectedItem = (Categoria)listaCategoría.SelectedItem;
+
+                if (selectedItem != null)
+                {
+                    listaCategoría.SelectedItem = listaCategoría.Items[selectedItem.Id];
+                }
             }
         }
 

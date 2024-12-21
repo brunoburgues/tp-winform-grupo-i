@@ -59,20 +59,6 @@ namespace BaseDatos
                 datos.CloseConexion();
             }
         }
-        public void ModificarImagen()
-        {
-            AccesoBaseDatos datos = new AccesoBaseDatos();
-            try
-            {
-                datos.SetConsulta("update IMAGENES set ImagenUrl = @Imagen where Id = @Id");
-                datos.setParametro("", );
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-        }
         public void EliminarImagen(int id)
         {
             try

@@ -189,6 +189,9 @@ namespace tpwinfom_grupo_i
             {
                 Articulo seleccionado = (Articulo)dgwArticulos.CurrentRow.DataBoundItem;
                 ArtículoVentana modificar = new ArtículoVentana(seleccionado);
+                modificar.ShowDialog();
+                cargarArticulos();
+
 
             }
             catch (Exception)

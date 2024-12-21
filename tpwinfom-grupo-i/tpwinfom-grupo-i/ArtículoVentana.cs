@@ -90,11 +90,15 @@ namespace tpwinfom_grupo_i
                     cajaDescripcion.Text = articulo.Descripcion;
                     cbCategoria.SelectedValue = articulo.Categoria.Id;
                     cbMarca.SelectedValue = articulo.Marca.Id;
-                    listarImagenes();
-                    listaImagenes = new List<string>();
-                    extraerUrl();
-                    //Muestra la primera imágen como previsualizacion.
-                    cargarImagen(listaImagenes[0]);
+                    if (articulo.Imagenes.Count > 0)
+                    {
+                        listarImagenes();
+                        listaImagenes = new List<string>();
+                        extraerUrl();
+                        //Muestra la primera imágen como previsualizacion.
+                        cargarImagen(listaImagenes[0]);
+                    }
+                    btnEliminar.Visible = true;
                 }
             }
             catch (Exception ex)
@@ -109,7 +113,7 @@ namespace tpwinfom_grupo_i
             ImagenDB imagenesDB = new ImagenDB();
             try
             {
-                if (articulo == null)
+                if (articulo != null)
                 {
                     establecerArticulo();
                     articuloDB.modificar(articulo);
@@ -121,11 +125,14 @@ namespace tpwinfom_grupo_i
                     articulo = new Articulo();
                     establecerArticulo();
                     articuloDB.agregar(articulo);
-                    articulo = articuloDB.TraerUltimoArticulo();
-                    //Guarda una imagen por vez
-                    foreach (string imagen in listaImagenes)
-                    {
-                        imagenesDB.AgregarImagen(articulo.Id, imagen);
+                    if (listaImagenes != null)
+                        {
+                        articulo = articuloDB.TraerUltimoArticulo();
+                        //Guarda una imagen por vez
+                        foreach (string imagen in listaImagenes)
+                        {
+                            imagenesDB.AgregarImagen(articulo.Id, imagen);
+                        }
                     }
                     MessageBox.Show("Se agrego exitosamente");
                 }
@@ -144,9 +151,9 @@ namespace tpwinfom_grupo_i
         private void galeria_Click(object sender, EventArgs e)
         {
             Galeria ventanaGaleria;
-            if (modificarArticulo())
+            if (articulo != null)
             {
-                ventanaGaleria = new Galeria(articulo.Id);
+                ventanaGaleria = new Galeria(articulo);
             }
             else
             {
@@ -154,42 +161,11 @@ namespace tpwinfom_grupo_i
             }
 
             ventanaGaleria.ShowDialog();
-
-            if (!modificarArticulo())
+            if (ventanaGaleria.Seleccionadas)
             {
-                if (ventanaGaleria.Seleccionadas)
-                {
-                    listaImagenes = ventanaGaleria.Imagenes;
-                    pictureBoxImagenes.Load(listaImagenes[0]);
-                    return;
-                }
-            }
-            listarImagenes();
-            extraerUrl();
-            pictureBoxImagenes.Load(listaImagenes[0]);
-        }
-        private void listaMarca_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (!modificarArticulo())
-            {
-                Marca selectedItem = (Marca)cbMarca.SelectedItem;
-
-                if (selectedItem != null)
-                {
-                    cbMarca.SelectedItem = cbMarca.Items[selectedItem.Id];
-                }
-            }
-        }
-        private void listaCategoría_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (!modificarArticulo())
-            {
-                Categoria selectedItem = (Categoria)cbCategoria.SelectedItem;
-
-                if (selectedItem != null)
-                {
-                    cbCategoria.SelectedItem = cbCategoria.Items[selectedItem.Id];
-                }
+                listaImagenes = ventanaGaleria.Imagenes;
+                pictureBoxImagenes.Load(listaImagenes[0]);
+                return;
             }
         }
         private void eliminar_Click(object sender, EventArgs e)
@@ -202,6 +178,7 @@ namespace tpwinfom_grupo_i
                 {
                     articuloDB.eliminar(articulo.Id);
                     MessageBox.Show("Se ha eliminado el articulo");
+                    this.Close();
                 }
             }
             catch (Exception ex)

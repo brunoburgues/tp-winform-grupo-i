@@ -34,6 +34,7 @@ namespace tpwinfom_grupo_i
         {
             ArtículoVentana ventanaArticulo = new ArtículoVentana();
             ventanaArticulo.ShowDialog();
+            cargarArticulos();
         }
 
         private void btnBusqueda_Click(object sender, EventArgs e)
@@ -191,8 +192,6 @@ namespace tpwinfom_grupo_i
                 ArtículoVentana modificar = new ArtículoVentana(seleccionado);
                 modificar.ShowDialog();
                 cargarArticulos();
-
-
             }
             catch (Exception)
             {

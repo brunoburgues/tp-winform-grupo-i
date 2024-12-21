@@ -19,11 +19,14 @@ namespace tpwinfom_grupo_i
             InitializeComponent();
             ModificarImagenes = false;
         }
-        public Galeria( int idArticulo)
+        public Galeria(Articulo articulo)
         {
             InitializeComponent();
-            this.idArticulo = idArticulo;
-            ModificarImagenes = true;
+            this.articulo = articulo;
+            if (articulo.Imagenes.Count > 0 )
+            {
+                ModificarImagenes = true;
+            }
         }
         public List<string> Imagenes { get; set;}
         public List<Imagen> ImagenesConId { get; set; }
@@ -32,7 +35,7 @@ namespace tpwinfom_grupo_i
         private List<string> imagenes = new List<string>();
         private List<Imagen> listaModificarImg;
         private int indiceListaRutas = 0;
-        private int idArticulo;
+        private Articulo articulo;
         //Métodos
         private int contadorElementos(List<Imagen> listaImagen, List<String> listaStrings)
         {
@@ -68,10 +71,10 @@ namespace tpwinfom_grupo_i
                         imagenes.AddRange(openFileDialog.FileNames);
                         foreach (string imagen in imagenes)
                         {
-                            imagenDB.AgregarImagen(idArticulo, imagen);
+                            imagenDB.AgregarImagen(articulo.Id, imagen);
                         }
 
-                        listaModificarImg = imagenDB.ListarImagenes(idArticulo);
+                        listaModificarImg = imagenDB.ListarImagenes(articulo.Id);
                     }
                     else
                     {
@@ -183,7 +186,7 @@ namespace tpwinfom_grupo_i
             if (ModificarImagenes)
             {
                 ImagenDB imagenDB = new ImagenDB();
-                listaModificarImg = imagenDB.ListarImagenes(idArticulo);
+                listaModificarImg = imagenDB.ListarImagenes(articulo.Id);
                 cargarImagen(listaModificarImg[indiceListaRutas].Url);
             }
             else
@@ -205,8 +208,8 @@ namespace tpwinfom_grupo_i
                     if (ModificarImagenes)
                     {
                         ImagenDB imagenDB = new ImagenDB();
-                        imagenDB.AgregarImagen(idArticulo, nuevoUrl);
-                        listaModificarImg = imagenDB.ListarImagenes(idArticulo);
+                        imagenDB.AgregarImagen(articulo.Id, nuevoUrl);
+                        listaModificarImg = imagenDB.ListarImagenes(articulo.Id);
                         indiceListaRutas = contadorElementos(listaModificarImg, imagenes) - 1;
                         cargarImagen(listaModificarImg[indiceListaRutas].Url);
                     }
@@ -221,13 +224,13 @@ namespace tpwinfom_grupo_i
                     btnAnterior.Enabled= true;
                     btnSiguiente.Enabled = false;
                 }
-                else if (contadorElementos(listaModificarImg, imagenes) == 0)
+                /*else if (contadorElementos(listaModificarImg, imagenes) == 0)
                 {
                     if (ModificarImagenes)
                     {
                         ImagenDB imagenDB = new ImagenDB();
-                        imagenDB.AgregarImagen(idArticulo, nuevoUrl);
-                        listaModificarImg = imagenDB.ListarImagenes(idArticulo);
+                        imagenDB.AgregarImagen(articulo.Id, nuevoUrl);
+                        listaModificarImg = imagenDB.ListarImagenes(articulo.Id);
                     }
                     else
                     {
@@ -238,7 +241,7 @@ namespace tpwinfom_grupo_i
                     btnAnterior.Enabled = false;
                     btnSiguiente.Enabled = contadorElementos(listaModificarImg, imagenes) > 1;
                     btnEliminar.Enabled = contadorElementos(listaModificarImg, imagenes) >= 1;
-                }
+                }*/
             }
             else
             {
@@ -250,18 +253,15 @@ namespace tpwinfom_grupo_i
         {
             try
             {
-                if (!ModificarImagenes)
+                if (contadorElementos(listaModificarImg, imagenes) > 0)
                 {
-                    if (contadorElementos(listaModificarImg, imagenes) > 0)
-                    {
-                        Seleccionadas = true;
-                        Imagenes = imagenes;
-                    }
-                    else
-                    {
-                        Seleccionadas = false;
-                        MessageBox.Show("No se ha seleccionado ninguna imagen.", "Imágenes Seleccionadas...", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    }
+                    Seleccionadas = true;
+                    Imagenes = imagenes;
+                }
+                else
+                {
+                    Seleccionadas = false;
+                    MessageBox.Show("No se ha seleccionado ninguna imagen.", "Imágenes Seleccionadas...", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
             catch (Exception)
@@ -284,7 +284,7 @@ namespace tpwinfom_grupo_i
                         ImagenDB imagenDB = new ImagenDB();
                         imagenDB.EliminarImagen(listaModificarImg[indiceListaRutas].Id);
                         MessageBox.Show("Imagen eliminada de la BD", "Imagen Eliminada...");
-                        listaModificarImg = imagenDB.ListarImagenes(idArticulo);
+                        listaModificarImg = imagenDB.ListarImagenes(articulo.Id);
                     }
                     else
                     {

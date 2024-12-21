@@ -41,7 +41,7 @@
             this.cancelar = new System.Windows.Forms.Button();
             this.cajaNombre = new System.Windows.Forms.TextBox();
             this.cajaPrecio = new System.Windows.Forms.TextBox();
-            this.eliminar = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
             this.cbMarca = new System.Windows.Forms.ComboBox();
             this.cbCategoria = new System.Windows.Forms.ComboBox();
             this.lblDescripcion = new System.Windows.Forms.Label();
@@ -189,17 +189,17 @@
             this.cajaPrecio.Size = new System.Drawing.Size(108, 20);
             this.cajaPrecio.TabIndex = 15;
             // 
-            // eliminar
+            // btnEliminar
             // 
-            this.eliminar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.eliminar.Location = new System.Drawing.Point(203, 235);
-            this.eliminar.Name = "eliminar";
-            this.eliminar.Size = new System.Drawing.Size(90, 23);
-            this.eliminar.TabIndex = 16;
-            this.eliminar.Text = "Eliminar";
-            this.eliminar.UseVisualStyleBackColor = true;
-            this.eliminar.Visible = false;
-            this.eliminar.Click += new System.EventHandler(this.eliminar_Click);
+            this.btnEliminar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnEliminar.Location = new System.Drawing.Point(203, 235);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(90, 23);
+            this.btnEliminar.TabIndex = 16;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Visible = false;
+            this.btnEliminar.Click += new System.EventHandler(this.eliminar_Click);
             // 
             // cbMarca
             // 
@@ -244,7 +244,7 @@
             this.Controls.Add(this.lblDescripcion);
             this.Controls.Add(this.cbCategoria);
             this.Controls.Add(this.cbMarca);
-            this.Controls.Add(this.eliminar);
+            this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.cajaPrecio);
             this.Controls.Add(this.cajaNombre);
             this.Controls.Add(this.cancelar);
@@ -284,7 +284,7 @@
         private System.Windows.Forms.Button cancelar;
         private System.Windows.Forms.TextBox cajaNombre;
         private System.Windows.Forms.TextBox cajaPrecio;
-        private System.Windows.Forms.Button eliminar;
+        private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.ComboBox cbMarca;
         private System.Windows.Forms.ComboBox cbCategoria;
         private System.Windows.Forms.Label lblDescripcion;

@@ -70,14 +70,25 @@ namespace tpwinfom_grupo_i
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            if (dgvImagenes.CurrentRow.DataBoundItem != null)
+            if (articuloNuevo)
             {
-                DialogResult result = MessageBox.Show("Seguro que quieres eliminar esta imagen?", "Eliminar imagen", MessageBoxButtons.YesNo);
-                if (result == DialogResult.Yes)
-                {      
-                    Imagen imagen = dgvImagenes.CurrentRow.DataBoundItem as Imagen;
-                    imagenDB.EliminarImagen(imagen.Id);
+                if (dgvImagenes.CurrentRow != null)
+                {
+                    Imagen eliminar = (Imagen)dgvImagenes.CurrentRow.DataBoundItem;
+                    list.Remove(eliminar);
                     listaImagenes();
+                }
+            }else
+            {
+                if (dgvImagenes.CurrentRow.DataBoundItem != null)
+                {
+                    DialogResult result = MessageBox.Show("Seguro que quieres eliminar esta imagen?", "Eliminar imagen", MessageBoxButtons.YesNo);
+                    if (result == DialogResult.Yes)
+                    {
+                        Imagen imagen = dgvImagenes.CurrentRow.DataBoundItem as Imagen;
+                        imagenDB.EliminarImagen(imagen.Id);
+                        listaImagenes();
+                    }
                 }
             }
         }

@@ -75,7 +75,10 @@ namespace tpwinfom_grupo_i
         private void dgwArticulos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             //Sugerencia: usar para ver detalles de articulos
-            Articulo seleccionado = (Articulo)dgwArticulos.Rows[e.RowIndex].DataBoundItem; 
+            Articulo seleccionado = (Articulo)dgwArticulos.Rows[e.RowIndex].DataBoundItem;
+            ArtículoVentana detalles = new ArtículoVentana(seleccionado,1);
+            detalles.ShowDialog();
+            cargarArticulos();
         }
 
         private void cbSeleccionarFiltro_SelectedIndexChanged(object sender, EventArgs e)

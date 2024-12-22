@@ -28,6 +28,19 @@ namespace tpwinfom_grupo_i
                 ModificarImagenes = true;
             }
         }
+        public Galeria(Articulo articulo,int i)
+        {
+            InitializeComponent(); 
+            if (articulo.Imagenes.Count > 0)
+            {
+                ModificarImagenes = false;
+            }
+            this.articulo = articulo;
+            btnAgregar.Enabled = false;
+            btnAgregarUrl.Enabled = false;
+            btnEliminar.Visible = false;
+            btnEliminar.Enabled = false;
+        }
         public List<string> Imagenes { get; set;}
         public List<Imagen> ImagenesConId { get; set; }
         public bool Seleccionadas {  get; set;}

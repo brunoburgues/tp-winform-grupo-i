@@ -102,6 +102,7 @@ namespace tpwinfom_grupo_i
                     pictureBoxImagenes.Load("https://www.pngkey.com/png/full/233-2332677_ega-png.png");
                     cbCategoria.SelectedIndex = -1;
                     cbMarca.SelectedIndex = -1;
+                    imagenes.Visible = false;
                 }
                 else
                 {
@@ -116,7 +117,6 @@ namespace tpwinfom_grupo_i
                         listarImagenes();
                         listaImagenes = new List<string>();
                         extraerUrl();
-                        //Muestra la primera imágen como previsualizacion.
                         cargarImagen(listaImagenes[0]);
                     }
                     btnEliminar.Visible = true;
@@ -146,14 +146,12 @@ namespace tpwinfom_grupo_i
                     articulo = new Articulo();
                     establecerArticulo();
                     articuloDB.agregar(articulo);
-                    if (listaImagenes != null)
-                        {
+                    DialogResult result = MessageBox.Show("Deseas agregar imagenes", "Agregar imagenes", MessageBoxButtons.YesNo);
+                    if (result == DialogResult.Yes)
+                    {
                         articulo = articuloDB.TraerUltimoArticulo();
-                        //Guarda una imagen por vez
-                        foreach (string imagen in listaImagenes)
-                        {
-                            imagenesDB.AgregarImagen(articulo.Id, imagen);
-                        }
+                        VisualizarImagenes visualizar = new VisualizarImagenes(articulo);
+                        visualizar.ShowDialog();
                     }
                     MessageBox.Show("Se agrego exitosamente");
                 }
@@ -170,25 +168,28 @@ namespace tpwinfom_grupo_i
             Close();
         }
         private void galeria_Click(object sender, EventArgs e)
+        // HEAD
         {
-            Galeria ventanaGaleria;
+            VisualizarImagenes ventanaGaleria;
             if (articulo != null)
             {
-                ventanaGaleria = new Galeria(articulo);
+                ventanaGaleria = new VisualizarImagenes(articulo);
             }
             else
             {
-                ventanaGaleria = new Galeria();
+                ventanaGaleria = new VisualizarImagenes();
             }
 
             ventanaGaleria.ShowDialog();
-            if (ventanaGaleria.Seleccionadas)
+           
+           
+
+
             {
-                listaImagenes = ventanaGaleria.Imagenes;
-                pictureBoxImagenes.Load(listaImagenes[0]);
-                return;
+                VisualizarImagenes visualizarImagenes = new VisualizarImagenes(articulo);
+                visualizarImagenes.ShowDialog();
+
             }
-            
         }
         private void eliminar_Click(object sender, EventArgs e)
         {

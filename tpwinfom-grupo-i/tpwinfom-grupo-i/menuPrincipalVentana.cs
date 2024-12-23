@@ -24,6 +24,7 @@ namespace tpwinfom_grupo_i
         List<Marca> listM = new List<Marca>();
         List<Categoria> listC = new List<Categoria>();
         int posicion;
+        int vistadgv = 0;
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -76,7 +77,7 @@ namespace tpwinfom_grupo_i
         {
             //Sugerencia: usar para ver detalles de articulos
             Articulo seleccionado = (Articulo)dgwArticulos.Rows[e.RowIndex].DataBoundItem;
-            ArtículoVentana detalles = new ArtículoVentana(seleccionado,1);
+            ArtículoVentana detalles = new ArtículoVentana(seleccionado,2);
             detalles.ShowDialog();
             cargarArticulos();
         }
@@ -111,24 +112,29 @@ namespace tpwinfom_grupo_i
         {
             Agregar agregar = new Agregar(0);
             agregar.ShowDialog();
+            if (vistadgv == 2) { cargarMarcas(); }
         }
 
         private void agregarToolStripMenuItem2_Click(object sender, EventArgs e)
         {
             Agregar agregar = new Agregar(1);
             agregar.ShowDialog();
+            if(vistadgv == 1) { cargarCategorias(); }
+            
         }
 
         private void editarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Editar editar = new Editar(0);
             editar.ShowDialog();
+            if (vistadgv == 2) { cargarMarcas(); }
         }
 
         private void editarToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             Editar editar1 = new Editar(1); 
             editar1.ShowDialog();
+            if (vistadgv == 1) { cargarCategorias(); }
         }
 
         private void cargarArticulos()
@@ -174,16 +180,21 @@ namespace tpwinfom_grupo_i
 
         private void btnVerMarcas_Click(object sender, EventArgs e)
         {
+            vistadgv = 2;
+            lblInformacion.Visible = false;
             cargarMarcas();
         }
 
         private void btnVerArticulos_Click(object sender, EventArgs e)
         {
+            vistadgv = 0;
             cargarArticulos();
         }
 
         private void btnVerCategorias_Click(object sender, EventArgs e)
         {
+            vistadgv = 1;
+            lblInformacion.Visible = false;
             cargarCategorias();
         }
 
@@ -192,7 +203,7 @@ namespace tpwinfom_grupo_i
             try
             {
                 Articulo seleccionado = (Articulo)dgwArticulos.CurrentRow.DataBoundItem;
-                ArtículoVentana modificar = new ArtículoVentana(seleccionado);
+                ArtículoVentana modificar = new ArtículoVentana(seleccionado, 1);
                 modificar.ShowDialog();
                 cargarArticulos();
             }

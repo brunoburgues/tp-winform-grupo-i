@@ -22,38 +22,44 @@ namespace tpwinfom_grupo_i
         Articulo articulo = null;
         List<string> listaImagenes;
         List<Imagen> imagenesExtraidasDB;
+        int posicion = 0;
 
         public ArtículoVentana()
         {
             InitializeComponent();
         }
-        public ArtículoVentana(Articulo modificarArt)
+        public ArtículoVentana(Articulo articulo, int posicion)
         {
             InitializeComponent();
-                this.Text = "Modificar Artículo";
-                agregar.Text = "Modificar";
-                articulo = modificarArt;            
-        }
-        public ArtículoVentana(Articulo detalles, int Id)
-        {
-            InitializeComponent();
-            this.Text = "Detalles Artículo";
-            
-            articulo = detalles;
-            tbCodigo.Enabled = false;
-            cajaNombre.Enabled = false;
-            cajaPrecio.Enabled = false;
-            cajaDescripcion.Enabled = false;
-            cbCategoria.Enabled = false;
-            cbMarca.Enabled =false;
-            agregar.Visible = false;
-            btnEliminar.Enabled = false;
-            imagenes.Visible = false;
-            btnEliminar.Visible = false;
-            imagenes.Enabled = false;
+            this.posicion = posicion;
+            switch (this.posicion)
+            {
+                case 0:
+                    break;
 
-        }
+                case 1:
+                    this.Text = "Modificar Artículo";
+                    agregar.Text = "Modificar";
+                    this.articulo = articulo;
+                    break;
 
+                case 2:
+                    this.Text = "Detalles Artículo";
+                    this.articulo = articulo;
+                    tbCodigo.Enabled = false;
+                    btnEliminar.Enabled = false;
+                    cajaNombre.Enabled = false;
+                    cajaPrecio.Enabled = false;
+                    cajaDescripcion.Enabled = false;
+                    cbCategoria.Enabled = false;
+                    cbMarca.Enabled =false;
+                    agregar.Enabled = false;
+                    break;
+
+                default:
+                    break;
+            }         
+        }
         //Métodos
         private void listarImagenes()
         {
@@ -103,6 +109,7 @@ namespace tpwinfom_grupo_i
                     cbCategoria.SelectedIndex = -1;
                     cbMarca.SelectedIndex = -1;
                     imagenes.Visible = false;
+                    btnEliminar.Visible = false;
                 }
                 else
                 {
@@ -150,7 +157,7 @@ namespace tpwinfom_grupo_i
                     if (result == DialogResult.Yes)
                     {
                         articulo = articuloDB.TraerUltimoArticulo();
-                        VisualizarImagenes visualizar = new VisualizarImagenes(articulo);
+                        VisualizarImagenes visualizar = new VisualizarImagenes(articulo, false);
                         visualizar.ShowDialog();
                     }
                     MessageBox.Show("Se agrego exitosamente");
@@ -168,28 +175,21 @@ namespace tpwinfom_grupo_i
             Close();
         }
         private void galeria_Click(object sender, EventArgs e)
-        // HEAD
         {
             VisualizarImagenes ventanaGaleria;
-            if (articulo != null)
-            {
-                ventanaGaleria = new VisualizarImagenes(articulo);
-            }
-            else
+
+            if (articulo == null)
             {
                 ventanaGaleria = new VisualizarImagenes();
             }
-
-            ventanaGaleria.ShowDialog();
-           
-           
-
-
+            else if (posicion == 1)
             {
-                VisualizarImagenes visualizarImagenes = new VisualizarImagenes(articulo);
-                visualizarImagenes.ShowDialog();
-
+                ventanaGaleria = new VisualizarImagenes(articulo, false);
+            }else
+            {
+                ventanaGaleria = new VisualizarImagenes(articulo, true);
             }
+            ventanaGaleria.ShowDialog();
         }
         private void eliminar_Click(object sender, EventArgs e)
         {
@@ -219,7 +219,13 @@ namespace tpwinfom_grupo_i
             articulo.Categoria = (Categoria)cbCategoria.SelectedItem;
             articulo.Descripcion = cajaDescripcion.Text;
         }
-       
 
+        private void cajaPrecio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
+            {
+                e.Handled = true; 
+            }
+        }
     }
 }

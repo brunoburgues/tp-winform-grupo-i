@@ -49,6 +49,7 @@
             this.cbSeleccionarFiltro = new System.Windows.Forms.ComboBox();
             this.cbFiltro = new System.Windows.Forms.ComboBox();
             this.btnEliminarFiltros = new System.Windows.Forms.Button();
+            this.lblInformacion = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgwArticulos)).BeginInit();
             this.SuspendLayout();
@@ -247,11 +248,22 @@
             this.btnEliminarFiltros.UseVisualStyleBackColor = false;
             this.btnEliminarFiltros.Click += new System.EventHandler(this.btnEliminarFiltros_Click);
             // 
+            // lblInformacion
+            // 
+            this.lblInformacion.AutoSize = true;
+            this.lblInformacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInformacion.Location = new System.Drawing.Point(29, 304);
+            this.lblInformacion.Name = "lblInformacion";
+            this.lblInformacion.Size = new System.Drawing.Size(254, 13);
+            this.lblInformacion.TabIndex = 9;
+            this.lblInformacion.Text = "*Para ver los detalles de un articulo haga doble click";
+            // 
             // menuPrincipalVentana
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(530, 326);
+            this.Controls.Add(this.lblInformacion);
             this.Controls.Add(this.btnEliminarFiltros);
             this.Controls.Add(this.cbFiltro);
             this.Controls.Add(this.cbSeleccionarFiltro);
@@ -296,6 +308,7 @@
         private System.Windows.Forms.ToolStripMenuItem btnVerMarcas;
         private System.Windows.Forms.ToolStripMenuItem btnVerCategorias;
         private System.Windows.Forms.ToolStripMenuItem modificarToolStripMenuItem;
+        private System.Windows.Forms.Label lblInformacion;
     }
 }
 

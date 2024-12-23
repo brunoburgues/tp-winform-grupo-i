@@ -188,6 +188,7 @@
             this.cajaPrecio.Name = "cajaPrecio";
             this.cajaPrecio.Size = new System.Drawing.Size(108, 20);
             this.cajaPrecio.TabIndex = 15;
+            this.cajaPrecio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cajaPrecio_KeyPress);
             // 
             // btnEliminar
             // 
@@ -198,7 +199,6 @@
             this.btnEliminar.TabIndex = 16;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
-            this.btnEliminar.Visible = false;
             this.btnEliminar.Click += new System.EventHandler(this.eliminar_Click);
             // 
             // cbMarca

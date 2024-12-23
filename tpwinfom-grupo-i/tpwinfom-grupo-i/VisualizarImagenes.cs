@@ -30,12 +30,17 @@ namespace tpwinfom_grupo_i
             InitializeComponent();
         }
 
-        public VisualizarImagenes(Articulo articulo)
+        public VisualizarImagenes(Articulo articulo, bool desactivado)
         {
             this.articulo = articulo;
-            ImagenDB imagenDB = new ImagenDB();
             list = imagenDB.ListarImagenes(articulo.Id);
             InitializeComponent();
+            if (desactivado)
+            {
+                btnEliminar.Enabled = false;
+                btnAgregar.Enabled = false;
+                tbUrl.Enabled = false;
+            }
         }
 
         private void VisualizarImagenes_Load(object sender, EventArgs e)

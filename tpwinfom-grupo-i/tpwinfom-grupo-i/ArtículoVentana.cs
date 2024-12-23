@@ -29,9 +29,9 @@ namespace tpwinfom_grupo_i
         public ArtículoVentana(Articulo modificarArt)
         {
             InitializeComponent();
-            this.Text = "Modificar Artículo";
-            agregar.Text = "Modificar";
-            articulo = modificarArt;
+                this.Text = "Modificar Artículo";
+                agregar.Text = "Modificar";
+                articulo = modificarArt;            
         }
         
         //Métodos

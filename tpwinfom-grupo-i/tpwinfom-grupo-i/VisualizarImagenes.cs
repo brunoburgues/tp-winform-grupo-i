@@ -20,6 +20,10 @@ namespace tpwinfom_grupo_i
         List<Imagen> list = new List<Imagen>();
         ImagenDB imagenDB = new ImagenDB();
         bool articuloNuevo = false;
+
+        public bool Seleccionadas { get; internal set; }
+        public List<string> Imagenes { get; internal set; }
+
         public VisualizarImagenes()
         {
             articuloNuevo=true;

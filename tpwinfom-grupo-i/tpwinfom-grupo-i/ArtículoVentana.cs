@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Reflection;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -33,7 +34,26 @@ namespace tpwinfom_grupo_i
                 agregar.Text = "Modificar";
                 articulo = modificarArt;            
         }
-        
+        public ArtículoVentana(Articulo detalles, int Id)
+        {
+            InitializeComponent();
+            this.Text = "Detalles Artículo";
+            
+            articulo = detalles;
+            tbCodigo.Enabled = false;
+            cajaNombre.Enabled = false;
+            cajaPrecio.Enabled = false;
+            cajaDescripcion.Enabled = false;
+            cbCategoria.Enabled = false;
+            cbMarca.Enabled =false;
+            agregar.Visible = false;
+            btnEliminar.Enabled = false;
+            imagenes.Visible = false;
+            btnEliminar.Visible = false;
+            imagenes.Enabled = false;
+
+        }
+
         //Métodos
         private void listarImagenes()
         {
@@ -61,6 +81,7 @@ namespace tpwinfom_grupo_i
             catch (Exception ex)
             {
                 pictureBoxImagenes.Load("https://www.pngkey.com/png/full/233-2332677_ega-png.png");
+
             }
         }
         //Eventos
@@ -147,9 +168,28 @@ namespace tpwinfom_grupo_i
             Close();
         }
         private void galeria_Click(object sender, EventArgs e)
-        {           
-            VisualizarImagenes visualizarImagenes = new VisualizarImagenes(articulo);
-            visualizarImagenes.ShowDialog();          
+        // HEAD
+        {
+            VisualizarImagenes ventanaGaleria;
+            if (articulo != null)
+            {
+                ventanaGaleria = new VisualizarImagenes(articulo);
+            }
+            else
+            {
+                ventanaGaleria = new VisualizarImagenes();
+            }
+
+            ventanaGaleria.ShowDialog();
+           
+           
+
+
+            {
+                VisualizarImagenes visualizarImagenes = new VisualizarImagenes(articulo);
+                visualizarImagenes.ShowDialog();
+
+            }
         }
         private void eliminar_Click(object sender, EventArgs e)
         {
@@ -179,5 +219,7 @@ namespace tpwinfom_grupo_i
             articulo.Categoria = (Categoria)cbCategoria.SelectedItem;
             articulo.Descripcion = cajaDescripcion.Text;
         }
+       
+
     }
 }
